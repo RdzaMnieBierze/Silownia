@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ciezarki.MVVM.Viewmodel
 {
-    internal class Class1
+    internal class AddWorkoutVM : BaseVM
     {
+        public AddWorkoutVM()
+        {
+
+        }
     }
 }

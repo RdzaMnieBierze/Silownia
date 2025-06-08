@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Ciezarki.MVVM.Model
 {
 
-    internal class ExerciseWorkout
+    internal class WorkoutExercises
     {
 
         private int _id;
@@ -47,7 +47,7 @@ namespace Ciezarki.MVVM.Model
             get { return _resttime_exercise; }
         }
 
-        public ExerciseWorkout(int id, int id_workout, int id_exercise, int sets_exercise, int reps_exercise, int resttime_exercise)
+        public WorkoutExercises(int id, int id_workout, int id_exercise, int sets_exercise, int reps_exercise, int resttime_exercise)
         {
             Id = id;
             Id_workout = id_workout;

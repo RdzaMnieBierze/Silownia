@@ -20,7 +20,7 @@ namespace Ciezarki
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainVM(new NavigationService());
+            DataContext = new MainVM(new NavigationService()); 
         }
     }
 }

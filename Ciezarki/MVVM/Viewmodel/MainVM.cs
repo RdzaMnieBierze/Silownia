@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Ciezarki.MVVM.Model;
 using Ciezarki.Core;
 using System.Windows.Input;
+using SQLitePCL;
 
 
 namespace Ciezarki.MVVM.Viewmodel
@@ -34,6 +35,7 @@ namespace Ciezarki.MVVM.Viewmodel
         public ICommand NavigateAddWorkout { get; }
         public MainVM(Core.NavigationService navigationService)
         {
+            
             _navigationService = navigationService;
             _navigationService.SetNavigator(vm => CurrentVM = vm);
 
@@ -42,6 +44,11 @@ namespace Ciezarki.MVVM.Viewmodel
             NavigateAddWorkout = new RelayCommand(_ => _navigationService.NavigateTo(addVM), _ => true);
 
             CurrentVM = addVM;
+
+            using var dbContext = new AppDbContext();
+            MessageBox.Show("Database initialized successfully!");
+            dbContext.Database.EnsureCreated();
+            dbContext.SaveChanges();
         }
     }
 }

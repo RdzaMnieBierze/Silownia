@@ -18,6 +18,9 @@
     <Page Update="MVVM\View\AddWorkoutView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\InputTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\MenuButtons.xaml">
       <SubType>Designer</SubType>
     </Page>

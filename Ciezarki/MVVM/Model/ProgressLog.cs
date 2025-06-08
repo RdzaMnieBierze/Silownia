@@ -16,14 +16,40 @@ namespace Ciezarki.MVVM.Model
         private double _biceps;
         private double _height;
         private string _notes;
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public DateTime Date { get; set; }
-        public double Weight { get; set; }
-        public double Chest { get; set; }
-        public double Biceps { get; set; }
-        public double Height { get; set; }
-        public string Notes { get; set; }
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public int UserId {
+            get { return _user_id; }
+            set { _user_id = value; }
+        }
+        public DateTime Date {
+            get { return _date; }
+            set { _date = value; }
+        }
+        public double Weight {
+            get { return _weight; }
+            set { _weight = value; }
+        }
+        public double Chest {
+            get { return _chest; }
+            set { _chest = value; }
+        }
+        public double Biceps {
+            get { return _biceps; }
+            set { _biceps = value; }
+        }
+        public double Height {
+            get { return _height; }
+            set { _height = value; }
+        }
+        public string Notes {
+            get { return _notes; }
+            set { _notes = value; }
+        }
 
 
         public ProgressLog(int id, int userId, DateTime date, double weight, double chest, double biceps, double height, string notes)

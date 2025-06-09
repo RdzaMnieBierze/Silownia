@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -6,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Ciezarki.MVVM.Viewmodel;
-using Ciezarki.Core;
 
-namespace Ciezarki
+namespace Ciezarki.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika interakcji dla klasy AddWorkoutView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddWorkoutView : UserControl
     {
-        public MainWindow()
+        public AddWorkoutView()
         {
             InitializeComponent();
-            DataContext = new MainVM(new NavigationService()); 
         }
     }
 }

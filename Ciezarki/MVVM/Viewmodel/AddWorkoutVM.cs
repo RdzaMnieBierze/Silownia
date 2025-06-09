@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ciezarki.MVVM.Model
+namespace Ciezarki.MVVM.Viewmodel
 {
-    internal class ExerciseWorkout
+    internal class AddWorkoutVM : BaseVM
     {
+        public AddWorkoutVM()
+        {
+
+        }
     }
 }

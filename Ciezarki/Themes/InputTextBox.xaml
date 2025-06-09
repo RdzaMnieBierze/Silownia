@@ -7,14 +7,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="10"
-                            Margin="10,2,0,2"
+                            Margin="10,0,0,0"
                             HorizontalAlignment="Center" 
                             Width="{Binding Path=(helpers:TextBoxHelper.BorderWidth), RelativeSource={RelativeSource TemplatedParent}}"
                             Height="{Binding Path=(helpers:TextBoxHelper.BorderHeight), RelativeSource={RelativeSource TemplatedParent}}">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                <GradientStop Color="#9EC5E5" Offset="0.0"/>
-                                <GradientStop Color="#1A4161" Offset="1.0"/>
+                                <GradientStop Color="#FDE74C" Offset="0.0"/>
+                                <GradientStop Color="#7A9D2F" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <Grid>

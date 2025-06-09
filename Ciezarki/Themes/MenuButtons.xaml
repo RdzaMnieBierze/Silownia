@@ -14,8 +14,8 @@
 
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                    <GradientStop Color="#9EC5E5" Offset="0.0"/>
-                                    <GradientStop Color="#1A4161" Offset="1.0"/>
+                                    <GradientStop Color="#FDE74C" Offset="0.0"/>
+                                    <GradientStop Color="#7A9D2F" Offset="1.0"/>
                                 </LinearGradientBrush>
                             </Border.Background>
 
@@ -23,7 +23,7 @@
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Margin="10,25,10,25"
-                                   FontSize="30"
+                                   FontSize="24"
                                    FontFamily="Resource/#Poppins"
                                    TextWrapping="Wrap"/>
 

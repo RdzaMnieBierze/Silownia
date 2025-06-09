@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="MVVM\View\AddExerciseView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\View\AddWorkoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,7 +18,13 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="MVVM\View\AddExerciseView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\View\AddWorkoutView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\AcceptButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\InputTextBox.xaml">

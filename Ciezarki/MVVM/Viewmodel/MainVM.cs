@@ -33,17 +33,20 @@ namespace Ciezarki.MVVM.Viewmodel
         }
 
         public ICommand NavigateAddWorkout { get; }
+        public ICommand NavigateAddExercise { get; }
         public MainVM(Core.NavigationService navigationService)
         {
             
             _navigationService = navigationService;
             _navigationService.SetNavigator(vm => CurrentVM = vm);
 
-            BaseVM addVM = new AddWorkoutVM();
+            BaseVM addWorkoutVM = new AddWorkoutVM();
+            BaseVM addExerciseVM = new AddExerciseVM();
 
-            NavigateAddWorkout = new RelayCommand(_ => _navigationService.NavigateTo(addVM), _ => true);
+            NavigateAddWorkout = new RelayCommand(_ => _navigationService.NavigateTo(addWorkoutVM), _ => true);
+            NavigateAddExercise = new RelayCommand(_ => _navigationService.NavigateTo(addExerciseVM), _ => true);
 
-            CurrentVM = addVM;
+            CurrentVM = addWorkoutVM;
 
             using var dbContext = new AppDbContext();
             MessageBox.Show("Database initialized successfully!");

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Ciezarki.MVVM.View.AddExerciseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ciezarki.MVVM.View"
+             xmlns:core="clr-namespace:Ciezarki.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1.8*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" Style="{StaticResource InputTextBox}"
+                core:TextBoxHelper.Title="Nazwa ćwiczenia"
+                core:TextBoxHelper.BorderWidth="530" core:TextBoxHelper.BorderHeight="95"/>
+
+        <TextBox Grid.Row="1" Style="{StaticResource InputTextBox}"
+                core:TextBoxHelper.Title="Opis ćwiczenia"
+                core:TextBoxHelper.BorderWidth="530" core:TextBoxHelper.BorderHeight="160"/>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox Style="{StaticResource InputTextBox}"
+                    core:TextBoxHelper.Title="Aktywowany mięsień"
+                    core:TextBoxHelper.BorderWidth="170" core:TextBoxHelper.BorderHeight="95"/>
+            <TextBox Style="{StaticResource InputTextBox}"
+                    core:TextBoxHelper.Title="Aktywowany mięsień"
+                    core:TextBoxHelper.BorderWidth="170" core:TextBoxHelper.BorderHeight="95"/>
+            <TextBox Style="{StaticResource InputTextBox}"
+                    core:TextBoxHelper.Title="Aktywowany mięsień"
+                    core:TextBoxHelper.BorderWidth="170" core:TextBoxHelper.BorderHeight="95"/>
+        </StackPanel>
+        
+        <Button Grid.Row="3" Style="{StaticResource AcceptButton}" Content="Dodaj" core:ButtonHelper.ButtonWidth="170"/>
+
+
+    </Grid>
+</UserControl>

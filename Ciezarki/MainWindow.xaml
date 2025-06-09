@@ -15,13 +15,16 @@
         <DataTemplate DataType="{x:Type viewModel:AddWorkoutVM}">
             <view:AddWorkoutView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AddExerciseVM}">
+            <view:AddExerciseView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Border CornerRadius="20" BorderThickness="2" BorderBrush="Black">
         <Border.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                <GradientStop Color="#A27035" Offset="0.0"/>
-                <GradientStop Color="#B88B4A" Offset="1.0"/>
+                <GradientStop Color="#EF7B45" Offset="0.0"/>
+                <GradientStop Color="#D84727" Offset="1.0"/>
             </LinearGradientBrush>
         </Border.Background>
 
@@ -53,10 +56,11 @@
             </Border>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
-                <RadioButton Content="Dodaj trening" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAdd}"/>
+                <RadioButton Content="Dodaj trening" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddWorkout}"/>
                 <RadioButton Content="Zaplanuj trening" Style="{StaticResource MenuButtonTheme}"/>
                 <RadioButton Content="Progresy" Style="{StaticResource MenuButtonTheme}"/>
                 <RadioButton Content="Historia treningów" Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Dodaj ćwiczenie" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddExercise}"/>
             </StackPanel>
 
             <ContentControl Content="{Binding CurrentVM}" Grid.Column="1" Grid.Row="1"/>

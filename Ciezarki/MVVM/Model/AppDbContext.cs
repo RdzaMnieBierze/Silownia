@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Ciezarki.MVVM.Model
 {
-    internal class AppDbContext:DbContext
+    internal class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-    
+        public DbSet<Workout> Workouts { get; set; }
+        public DbSet<UserWorkout> UserWorkouts { get; set; }
+        public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<WorkoutExercises> WorkoutExercises { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,7 +20,7 @@ namespace Ciezarki.MVVM.Model
         {
             modelBuilder.Entity<User>().HasData(
                 new User(1, "abc@eu", "123", "chuj"));
-               
+
         }
     }
 }

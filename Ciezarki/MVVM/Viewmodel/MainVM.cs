@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ciezarki.MVVM.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Windows;
-using System.Windows.Navigation;
-using Ciezarki.MVVM.Model;
-using Ciezarki.Core;
 using System.Windows.Input;
-using SQLitePCL;
 
 
 namespace Ciezarki.MVVM.Viewmodel
 {
     class MainVM : BaseVM
     {
+
         public RelayCommand exit => new RelayCommand(execute => ExitButton());
         private void ExitButton()
         {
+            using var dbContext = new AppDbContext();
+            dbContext.Database.ExecuteSqlRaw("PRAGMA wal_checkpoint(FULL);");
+
             Application.Current.Shutdown();
         }
         private readonly Core.NavigationService _navigationService;
@@ -35,7 +32,7 @@ namespace Ciezarki.MVVM.Viewmodel
         public ICommand NavigateAddWorkout { get; }
         public MainVM(Core.NavigationService navigationService)
         {
-            
+
             _navigationService = navigationService;
             _navigationService.SetNavigator(vm => CurrentVM = vm);
 
@@ -45,9 +42,12 @@ namespace Ciezarki.MVVM.Viewmodel
 
             CurrentVM = addVM;
 
+
             using var dbContext = new AppDbContext();
             MessageBox.Show("Database initialized successfully!");
             dbContext.Database.EnsureCreated();
+            dbContext.SaveChanges();
+            dbContext.Workouts.Add(new Workout(222, DateTime.Now, "KUUUUTAS"));
             dbContext.SaveChanges();
         }
     }

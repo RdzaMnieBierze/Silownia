@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ciezarki.MVVM.Model
+﻿namespace Ciezarki.MVVM.Model
 {
     internal class User
     {
@@ -13,23 +7,28 @@ namespace Ciezarki.MVVM.Model
         private string _email;
         private string _password;
         private DateTime _createdAt;
-        public int Id {
+        public int Id
+        {
             get { return _id; }
             set { _id = value; }
         }
-        public string Username {
+        public string Username
+        {
             get { return _username; }
             set { _username = value; }
         }
-        public string Email {
+        public string Email
+        {
             get { return _email; }
             set { _email = value; }
         }
-        public string Password {
+        public string Password
+        {
             get { return _password; }
             set { _password = value; }
         }
-        public DateTime CreatedAt {
+        public DateTime CreatedAt
+        {
             get { return CreatedAt; }
             set { _createdAt = value; }
         }

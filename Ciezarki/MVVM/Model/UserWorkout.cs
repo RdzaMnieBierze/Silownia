@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ciezarki.MVVM.Model
+﻿namespace Ciezarki.MVVM.Model
 {
     internal class UserWorkout
     {
 
         private int _id;
-        public int Id { 
+        public int Id
+        {
             set { _id = value; }
-            get { return _id; } }
+            get { return _id; }
+        }
         private int _id_user;
         public int Id_user
         {
@@ -44,15 +40,15 @@ namespace Ciezarki.MVVM.Model
             get { return _name; }
         }
 
-        public UserWorkout (int id,int id_user, int id_workout, DateTime create_date, DateTime plan_date, string name)
+        public UserWorkout(int id, int id_user, int id_workout, DateTime create_date, DateTime plan_date, string name)
         {
             Id = id;
             Id_user = id_user;
-            Id_workout = id_workout;    
+            Id_workout = id_workout;
             Name = name;
             Create_date = create_date;
             Plan_date = plan_date;
-            
+
         }
     }
 

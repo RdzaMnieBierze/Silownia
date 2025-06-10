@@ -68,5 +68,7 @@
         {
             return $"{Id}: User Id: {UserId} on {Date.ToShortDateString()} - {Weight} kg, Chest: {Chest}, Biceps: {Biceps}, Height: {Height} cm, Notes: {Notes} ";
         }
+
+        public User User { get; set; }
     }
 }

@@ -50,6 +50,9 @@
             Plan_date = plan_date;
 
         }
+
+        public User User { get; set; }
+        public Workout Workout { get; set; }
     }
 
 }

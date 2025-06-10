@@ -40,5 +40,8 @@
         {
             return Name;
         }
+
+
+        public ICollection<WorkoutExercises> WorkoutExercises { get; set; }
     }
 }

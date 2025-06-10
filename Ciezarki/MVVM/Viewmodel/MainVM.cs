@@ -46,6 +46,11 @@ namespace Ciezarki.MVVM.Viewmodel
             using var dbContext = new AppDbContext();
             MessageBox.Show("Database initialized successfully!");
             dbContext.Database.EnsureCreated();
+
+            dbContext.ProgressLogs.Add(new ProgressLog(1, 1, DateTime.Now, 50, 50, 120, 13, "Text"));
+            //dbContext.Users.Remove(dbContext.Find<User>(1));
+            dbContext.SaveChanges();
+
         }
     }
 }

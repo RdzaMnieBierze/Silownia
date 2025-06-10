@@ -44,5 +44,8 @@
         {
             return $"{Id}: {Username} ({Email}), Created at: {CreatedAt.ToShortTimeString}";
         }
+
+        public ICollection<ProgressLog> ProgressLog { get; set; }
+        public ICollection<UserWorkout> UserWorkout { get; set; }
     }
 }

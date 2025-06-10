@@ -33,5 +33,8 @@
         {
             return Notes;
         }
+
+        public ICollection<WorkoutExercises> WorkoutExercises { get; set; }
+        public ICollection<UserWorkout> UserWorkout { get; set; }
     }
 }

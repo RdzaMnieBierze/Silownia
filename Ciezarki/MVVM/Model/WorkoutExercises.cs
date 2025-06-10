@@ -50,6 +50,9 @@
             Reps_exercise = reps_exercise;
             Resttime_exercise = resttime_exercise;
         }
+
+        public Workout Workout { get; set; }
+        public Exercise Exercise { get; set; }
     }
 
 }

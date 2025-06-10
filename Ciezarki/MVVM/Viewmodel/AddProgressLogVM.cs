@@ -8,5 +8,6 @@ namespace Ciezarki.MVVM.Viewmodel
 {
     internal class AddProgressLogVM
     {
+
     }
 }

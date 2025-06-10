@@ -4,9 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ciezarki.MVVM.View"
+              xmlns:core="clr-namespace:Ciezarki.Core"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Dodaj Swój progress" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <TextBox Style="{StaticResource InputTextBox}"
+                 core:TextBoxHelper.Title="Waga:" 
+                 Grid.Row="1"
+                 Grid.Column=" 0"/>
+        <TextBox Style="{StaticResource InputTextBox}"
+         core:TextBoxHelper.Title="Klata:" 
+         Grid.Row="1"
+         Grid.Column=" 1"/>
+        <TextBox Style="{StaticResource InputTextBox}"
+                 core:TextBoxHelper.Title="Biceps:" 
+                 Grid.Row="2"
+                 Grid.Column=" 0"/>
+        <TextBox Style="{StaticResource InputTextBox}"
+                 core:TextBoxHelper.Title="Wzrost:" 
+                 Grid.Row="2"
+                 Grid.Column=" 1"/>
+        <Button x:Name="AddProgressButton" Grid.ColumnSpan="2" Grid.Row="3" Content="Zapisz progress"/>
+
+
     </Grid>
 </UserControl>

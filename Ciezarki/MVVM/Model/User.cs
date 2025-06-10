@@ -33,13 +33,10 @@
             set { _createdAt = value; }
         }
 
-        //public User(int id, string username, string email, string password)
-        //{
-        //    Id = id;
-        //    Username = username;
-        //    Email = email;
-        //    Password = password;
-        //}
+        public User()
+        {
+            CreatedAt = DateTime.Now;
+        }
         public override string ToString()
         {
             return $"{Id}: {Username} ({Email}), Created at: {CreatedAt.ToShortTimeString}";

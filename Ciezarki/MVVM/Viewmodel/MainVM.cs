@@ -50,16 +50,14 @@ namespace Ciezarki.MVVM.Viewmodel
             using (var context = new AppDbContext())
             {
                 context.Database.EnsureCreated();
-                var newUser = new User
-                {
-                    Username = "Jan Kowalski",
-                    Email = "abc@pl",
-                    Password = "password",
-                    CreatedAt = DateTime.Now
-                    // Id nie ustawiasz – EF zrobi to za Ciebie
-                };
+                var u = new User();
+                u.Username = "Antek";
+                u.Password = "1234";
+                u.Email = "antel@polsl.pl";
 
-                context.Users.Add(newUser);   // dodaj do kontekstu
+
+
+                context.Users.Add(u);   // dodaj do kontekstu
                 context.SaveChanges();        // zapis do bazy
             }
 

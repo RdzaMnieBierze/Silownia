@@ -43,13 +43,29 @@ namespace Ciezarki.MVVM.Viewmodel
             CurrentVM = addVM;
 
 
-            using var dbContext = new AppDbContext();
-            MessageBox.Show("Database initialized successfully!");
-            dbContext.Database.EnsureCreated();
+       
+            //MessageBox.Show("Database initialized successfully!");
+            
 
-            dbContext.ProgressLogs.Add(new ProgressLog(1, 1, DateTime.Now, 50, 50, 120, 13, "Text"));
-            //dbContext.Users.Remove(dbContext.Find<User>(1));
-            dbContext.SaveChanges();
+            using (var context = new AppDbContext())
+            {
+                context.Database.EnsureCreated();
+                var newUser = new User
+                {
+                    Username = "Jan Kowalski",
+                    Email = "abc@pl",
+                    Password = "password",
+                    CreatedAt = DateTime.Now
+                    // Id nie ustawiasz – EF zrobi to za Ciebie
+                };
+
+                context.Users.Add(newUser);   // dodaj do kontekstu
+                context.SaveChanges();        // zapis do bazy
+            }
+
+
+
+          
 
         }
     }

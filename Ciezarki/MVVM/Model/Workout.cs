@@ -27,5 +27,11 @@
             Create_date = create_date;
             Notes = notes;
         }
+
+
+        public override string ToString()
+        {
+            return Notes;
+        }
     }
 }

@@ -34,5 +34,11 @@
             set { _muscle = value; }
             get { return _muscle; }
         }
+
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

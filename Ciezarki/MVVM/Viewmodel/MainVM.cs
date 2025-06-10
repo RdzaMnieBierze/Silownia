@@ -46,9 +46,6 @@ namespace Ciezarki.MVVM.Viewmodel
             using var dbContext = new AppDbContext();
             MessageBox.Show("Database initialized successfully!");
             dbContext.Database.EnsureCreated();
-            dbContext.SaveChanges();
-            dbContext.Workouts.Add(new Workout(222, DateTime.Now, "KUUUUTAS"));
-            dbContext.SaveChanges();
         }
     }
 }

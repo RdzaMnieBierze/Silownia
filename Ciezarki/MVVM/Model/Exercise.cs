@@ -9,6 +9,13 @@
             Description = description;
             Muscle = muscle;
         }
+        public Exercise()
+        {
+            Name = string.Empty;
+            Description = string.Empty;
+            Muscle = string.Empty;
+
+        }
         private int _id;
         public int Id
         {

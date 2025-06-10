@@ -47,19 +47,19 @@ namespace Ciezarki.MVVM.Viewmodel
             //MessageBox.Show("Database initialized successfully!");
             
 
-            using (var context = new AppDbContext())
-            {
-                context.Database.EnsureCreated();
-                var u = new User();
-                u.Username = "Antek";
-                u.Password = "1234";
-                u.Email = "antel@polsl.pl";
+            //using (var context = new AppDbContext())
+            //{
+            //    context.Database.EnsureCreated();
+            //    var u = new User();
+            //    u.Username = "Antek";
+            //    u.Password = "1234";
+            //    u.Email = "antel@polsl.pl";
 
 
 
-                context.Users.Add(u);   // dodaj do kontekstu
-                context.SaveChanges();        // zapis do bazy
-            }
+            //    context.Users.Add(u);   // dodaj do kontekstu
+            //    context.SaveChanges();        // zapis do bazy
+            //}
 
 
 

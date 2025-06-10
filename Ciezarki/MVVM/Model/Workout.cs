@@ -28,6 +28,13 @@
             Notes = notes;
         }
 
+        public Workout()
+        {
+            Create_date = DateTime.Now;
+            Notes = string.Empty;
+
+        }
+
 
         public override string ToString()
         {

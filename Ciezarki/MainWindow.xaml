@@ -15,6 +15,9 @@
         <DataTemplate DataType="{x:Type viewModel:AddWorkoutVM}">
             <view:AddWorkoutView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AddProgressLogVM}">
+            <view:AddProgressView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Border CornerRadius="20" BorderThickness="2" BorderBrush="Black">

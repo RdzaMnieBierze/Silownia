@@ -37,7 +37,7 @@
                  core:TextBoxHelper.Title="Wzrost:" 
                  Grid.Row="2"
                  Grid.Column=" 1"/>
-        <Button x:Name="AddProgressButton" Grid.ColumnSpan="2" Grid.Row="3" Content="Zapisz progress"/>
+        <Button x:Name="AddProgressButton" Grid.ColumnSpan="2" Grid.Row="3" Content="Zapisz progress" Style="{StaticResource GradientButtonStyle}"/>
 
 
     </Grid>

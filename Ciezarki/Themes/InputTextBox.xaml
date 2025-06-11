@@ -9,12 +9,14 @@
                     <Border CornerRadius="10"
                             Margin="10,2,0,2"
                             HorizontalAlignment="Center" 
+                            BorderThickness="2"
                             Width="{Binding Path=(helpers:TextBoxHelper.BorderWidth), RelativeSource={RelativeSource TemplatedParent}}"
-                            Height="{Binding Path=(helpers:TextBoxHelper.BorderHeight), RelativeSource={RelativeSource TemplatedParent}}">
+                            Height="{Binding Path=(helpers:TextBoxHelper.BorderHeight), RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="#FF13344E">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                <GradientStop Color="#9EC5E5" Offset="0.0"/>
-                                <GradientStop Color="#1A4161" Offset="1.0"/>
+                                <GradientStop Color="#199EC5E5" Offset="0.0"/>
+                                <GradientStop Color="#191A4161" Offset="1.0"/>
+                                
                             </LinearGradientBrush>
                         </Border.Background>
                         <Grid>

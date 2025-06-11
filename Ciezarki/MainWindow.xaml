@@ -20,8 +20,8 @@
     <Border CornerRadius="20" BorderThickness="2" BorderBrush="Black">
         <Border.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                <GradientStop Color="#A27035" Offset="0.0"/>
-                <GradientStop Color="#B88B4A" Offset="1.0"/>
+                <GradientStop Color="White" Offset="0.0"/>
+                <GradientStop Color="#FFB3B3B3" Offset="1.0"/>
             </LinearGradientBrush>
         </Border.Background>
 
@@ -36,36 +36,37 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0"
-                       Text="Ciężarki"
+            <TextBlock
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Margin="20,0,0,0"
+                       HorizontalAlignment="Center"
                        FontSize="40"
-                       FontFamily="/Resource/#Poppins"/>
+                       FontFamily="/Resource/#Poppins" Width="249" TextAlignment="Center">
+                <TextBlock.Background>
+                    <ImageBrush/>
+                </TextBlock.Background><Run Language="pl-pl" Text="CIĘŻARKI"/></TextBlock>
 
             <Border Grid.Column="1"  Grid.Row="0" HorizontalAlignment="Right"
                     VerticalAlignment="Top" Margin="15"
-                    Width="30" Height="30" CornerRadius="15"
-                    Background="#EC4E20" BorderBrush="Black"
+                    Width="30" Height="30" 
+                    Background="#FF173C59" BorderBrush="Black"
                     BorderThickness="1.5">
-                <Button Content="X" BorderThickness="0" Foreground="Black" Background="Transparent" Command="{Binding exit}" FontFamily="/Resource/#Poppins" FontWeight="Bold"/>
+                <Button Content="X" BorderThickness="0" Foreground="White" Background="Transparent" Command="{Binding exit}" FontFamily="/Resource/#Poppins" FontWeight="Bold"/>
             </Border>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
-                <RadioButton Content="Dodaj trening" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAdd}"/>
-                <RadioButton Content="Zaplanuj trening" Style="{StaticResource MenuButtonTheme}"/>
-                <RadioButton Content="Progresy" Style="{StaticResource MenuButtonTheme}"/>
-                <RadioButton Content="Historia treningów" Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="NOWY TRENING" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAdd}" Height="133"/>
+                <RadioButton Content="ZAPLANUJ TRENING" Style="{StaticResource MenuButtonTheme}" Height="133" Checked="RadioButton_Checked"/>
+                <RadioButton TextBlock.FontSize="10" TextBlock.TextAlignment="Center" Content="PROGRESY" Style="{StaticResource MenuButtonTheme}" Height="99"/>
+                <RadioButton TextBlock.FontSize="10"  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" Height="133"/>
             </StackPanel>
 
             <ContentControl Content="{Binding CurrentVM}" Grid.Column="1" Grid.Row="1"/>
         </Grid>
-        
-        
-        
-        
+
+
+
+
     </Border>
-    
-    
+
+
 </Window>

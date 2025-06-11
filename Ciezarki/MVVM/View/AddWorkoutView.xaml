@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.2*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
@@ -25,7 +25,7 @@
                   core:TextBoxHelper.BorderWidth="200" core:TextBoxHelper.BorderHeight="55"/>
         </StackPanel>
 
-        
+
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
@@ -33,18 +33,25 @@
                      core:TextBoxHelper.BorderWidth="660" core:TextBoxHelper.BorderHeight="75"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2">
-            <ComboBox Width="200"/>
-
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,10,0  ">
+            <ComboBox Width="170" Height="54">
+                
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop/>
+                        <GradientStop Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
             <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń"
-                       core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
+                       core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="130"/>
             <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość serii"
-                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
+                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128"/>
             <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Obciążenie"
-                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
+                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128"/>
             <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
-            
+
         </StackPanel>
 
     </Grid>

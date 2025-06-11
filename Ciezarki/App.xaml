@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="Themes/MenuButtons.xaml"/>
                 <ResourceDictionary Source="Themes/InputTextBox.xaml"/>
                 <ResourceDictionary Source="Themes/AcceptButton.xaml"/>
+                <ResourceDictionary Source="/Themes/GradientButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

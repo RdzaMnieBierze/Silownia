@@ -31,6 +31,8 @@ namespace Ciezarki.MVVM.Viewmodel
 
         public ICommand NavigateAddWorkout { get; }
         public ICommand NavigateAddExercise { get; }
+
+        public ICommand NavigateAddProgressLog { get; }
         public MainVM(Core.NavigationService navigationService)
         {
 
@@ -39,9 +41,11 @@ namespace Ciezarki.MVVM.Viewmodel
 
             BaseVM addWorkoutVM = new AddWorkoutVM();
             BaseVM addExerciseVM = new AddExerciseVM();
+            BaseVM addProgressLogVM = new AddProgressLogVM();
 
             NavigateAddWorkout = new RelayCommand(_ => _navigationService.NavigateTo(addWorkoutVM), _ => true);
             NavigateAddExercise = new RelayCommand(_ => _navigationService.NavigateTo(addExerciseVM), _ => true);
+            NavigateAddProgressLog = new RelayCommand(_ => _navigationService.NavigateTo(addProgressLogVM), _ => true);
 
             CurrentVM = addWorkoutVM;
 

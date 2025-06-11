@@ -18,6 +18,9 @@
         <DataTemplate DataType="{x:Type viewModel:AddProgressLogVM}">
             <view:AddProgressView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AddExerciseVM}">
+            <view:AddExerciseView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Border CornerRadius="20" BorderThickness="2" BorderBrush="Black">
@@ -57,10 +60,12 @@
             </Border>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
-                <RadioButton Content="NOWY TRENING" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAdd}" Height="133"/>
-                <RadioButton Content="ZAPLANUJ TRENING" Style="{StaticResource MenuButtonTheme}" Height="133" Checked="RadioButton_Checked"/>
-                <RadioButton TextBlock.FontSize="10" TextBlock.TextAlignment="Center" Content="PROGRESY" Style="{StaticResource MenuButtonTheme}" Height="99"/>
-                <RadioButton TextBlock.FontSize="10"  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" Height="133"/>
+                <RadioButton Content="NOWY TRENING" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddWorkout}" />
+                <RadioButton Content="ZAPLANUJ TRENING" Style="{StaticResource MenuButtonTheme}"  />
+                <RadioButton  Content="PROGRESY"  Command="{Binding NavigateAddProgressLog}" Style="{StaticResource MenuButtonTheme}" />
+                <RadioButton  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" />
+                <RadioButton Content="Dodaj ćwiczenie" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddExercise}"/>
+
             </StackPanel>
 
             <ContentControl Content="{Binding CurrentVM}" Grid.Column="1" Grid.Row="1"/>

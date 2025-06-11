@@ -21,6 +21,7 @@
         <DataTemplate DataType="{x:Type viewModel:AddExerciseVM}">
             <view:AddExerciseView/>
         </DataTemplate>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
 
     <Border CornerRadius="20" BorderThickness="2" BorderBrush="Black">
@@ -30,6 +31,7 @@
                 <GradientStop Color="#FFB3B3B3" Offset="1.0"/>
             </LinearGradientBrush>
         </Border.Background>
+        <Grid>
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -68,6 +70,220 @@
             </StackPanel>
 
             <ContentControl Content="{Binding CurrentVM}" Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+            <Border CornerRadius="20"
+        BorderThickness="2"
+        BorderBrush="Black"
+        Visibility="{Binding IsLoginPanelVisible, Converter={StaticResource BoolToVis}}">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="White" Offset="0.0"/>
+                        <GradientStop Color="#FFB3B3B3" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Grid>
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                        <TextBlock
+   VerticalAlignment="Center"
+   HorizontalAlignment="Center"
+   FontSize="40"
+   FontFamily="/Resource/#Poppins" Width="249" TextAlignment="Center">
+                            <TextBlock.Background>
+                                <ImageBrush/>
+                            </TextBlock.Background><Run Language="pl-pl" Text="CIĘŻARKI"/></TextBlock>
+
+                        <Border Grid.Column="1"  Grid.Row="0" HorizontalAlignment="Right"
+VerticalAlignment="Top" Margin="15"
+Width="30" Height="30" 
+Background="#FF173C59" BorderBrush="Black"
+BorderThickness="1.5">
+                            <Button Content="X" BorderThickness="0" Foreground="White" Background="Transparent" Command="{Binding exit}" FontFamily="/Resource/#Poppins" FontWeight="Bold"/>
+                        </Border>
+                    </Grid>
+
+                    
+                    <Border Width="2"
+                    Background="#FF173C59"
+                    HorizontalAlignment="Center"
+                    Margin="15"
+                    Panel.ZIndex="1" 
+                    Grid.Row="1"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="4*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Logowanie"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="35"
+                       Foreground="#FF173C59"
+                       FontWeight="Bold"/>
+                        <TextBlock Text="Załóż konto"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="35"
+                       Foreground="#FF173C59"
+                       FontWeight="Bold"/>
+                        <Grid Grid.Row="1"
+                  Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Nazwa użytkownika:"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           FontSize="18"
+                           Foreground="#FF173C59"
+                           FontWeight="Bold"/>
+                            <TextBlock Text="Hasło:"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           FontSize="18"
+                           Foreground="#FF173C59"
+                           FontWeight="Bold"/>
+                            <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Margin="15,12,15,12"
+                             FontSize="18"
+                             VerticalContentAlignment="Center"/>
+                            <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="15,12,15,12"
+                             FontSize="18"
+                             VerticalContentAlignment="Center"/>
+                            <Button Content="Zaloguj"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Margin="100,10,15,10"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Background="#FF173C59"
+                            Foreground="White"
+                            BorderBrush="#FF173C59"
+                            Command="{Binding SignInCommand}"/>
+                        </Grid>
+                        <Grid Grid.Row="1"
+                  Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Nazwa użytkownika:"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           FontSize="18"
+                           Foreground="#FF173C59"
+                           FontWeight="Bold"/>
+                            <TextBlock Text="Adres e-mail:"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           FontSize="18"
+                           Foreground="#FF173C59"
+                           FontWeight="Bold"/>
+                            <TextBlock Text="Hasło:"
+                           Grid.Column="0"
+                           Grid.Row="2"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           FontSize="18"
+                           Foreground="#FF173C59"
+                           FontWeight="Bold"/>
+                            <TextBlock Text="Powtórz hasło:"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           FontSize="18"
+                           Foreground="#FF173C59"
+                           FontWeight="Bold"/>
+                            <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Margin="15,12,15,12"
+                             FontSize="18"
+                             VerticalContentAlignment="Center"/>
+                            <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="15,12,15,12"
+                             FontSize="18"
+                             VerticalContentAlignment="Center"/>
+                            <TextBox Grid.Row="2"
+                             Grid.Column="1"
+                             Margin="15,12,15,12"
+                             FontSize="18"
+                             VerticalContentAlignment="Center"/>
+                            <TextBox Grid.Row="3"
+                             Grid.Column="1"
+                             Margin="15,12,15,12"
+                             FontSize="18"
+                             VerticalContentAlignment="Center"/>
+                            <Button Content="Utwórz konto"
+                            Grid.Column="1"
+                            Grid.Row="4"
+                            Margin="100,10,15,10"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Background="#FF173C59"
+                            Foreground="White"
+                            BorderBrush="#FF173C59"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+        </Border>
+
         </Grid>
 
 

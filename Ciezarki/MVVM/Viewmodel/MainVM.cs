@@ -33,6 +33,7 @@ namespace Ciezarki.MVVM.Viewmodel
         public ICommand NavigateAddExercise { get; }
 
         public ICommand NavigateAddProgressLog { get; }
+        public ICommand SignInCommand { get; }
         public MainVM(Core.NavigationService navigationService)
         {
 
@@ -50,9 +51,9 @@ namespace Ciezarki.MVVM.Viewmodel
             CurrentVM = addWorkoutVM;
 
 
-       
+
             //MessageBox.Show("Database initialized successfully!");
-            
+
 
             //using (var context = new AppDbContext())
             //{
@@ -68,10 +69,29 @@ namespace Ciezarki.MVVM.Viewmodel
             //    context.SaveChanges();        // zapis do bazy
             //}
 
+            SignInCommand = new RelayCommand(_ => SignIn(), _ => true);
 
 
-          
 
+        }
+        private bool _isLoginPanelVisible = true;
+
+        public bool IsLoginPanelVisible
+        {
+            get => _isLoginPanelVisible;
+            set
+            {
+                if (_isLoginPanelVisible != value)
+                {
+                    _isLoginPanelVisible = value;
+                    OnPropertyChanged(nameof(_isLoginPanelVisible));
+                }
+            }
+        }
+        public void SignIn()
+        {
+            _isLoginPanelVisible = !IsLoginPanelVisible;
+            OnPropertyChanged(nameof(IsLoginPanelVisible));
         }
     }
 }

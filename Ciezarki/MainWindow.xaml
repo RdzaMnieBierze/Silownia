@@ -61,7 +61,6 @@
 
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
                 <RadioButton Content="NOWY TRENING" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddWorkout}" />
-                <RadioButton Content="ZAPLANUJ TRENING" Style="{StaticResource MenuButtonTheme}"  />
                 <RadioButton  Content="PROGRESY"  Command="{Binding NavigateAddProgressLog}" Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton Content="Dodaj ćwiczenie" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddExercise}"/>

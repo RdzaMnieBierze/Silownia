@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ciezarki.MVVM.Viewmodel
 {
-    internal class AddProgressLogVM
+    internal class AddProgressLogVM:BaseVM
     {
-
+        
     }
 }

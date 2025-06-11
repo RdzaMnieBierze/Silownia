@@ -36,7 +36,7 @@ namespace Ciezarki.MVVM.Viewmodel
             _navigationService = navigationService;
             _navigationService.SetNavigator(vm => CurrentVM = vm);
 
-            BaseVM addVM = new AddWorkoutVM();
+            BaseVM addVM = new AddProgressLogVM();
 
             NavigateAddWorkout = new RelayCommand(_ => _navigationService.NavigateTo(addVM), _ => true);
 

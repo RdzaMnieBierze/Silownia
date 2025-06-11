@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ciezarki.MVVM.Model
+﻿namespace Ciezarki.MVVM.Model
 {
     internal class ProgressLog
     {
@@ -22,31 +16,38 @@ namespace Ciezarki.MVVM.Model
             set { _id = value; }
         }
 
-        public int UserId {
+        public int UserId
+        {
             get { return _user_id; }
             set { _user_id = value; }
         }
-        public DateTime Date {
+        public DateTime Date
+        {
             get { return _date; }
             set { _date = value; }
         }
-        public double Weight {
+        public double Weight
+        {
             get { return _weight; }
             set { _weight = value; }
         }
-        public double Chest {
+        public double Chest
+        {
             get { return _chest; }
             set { _chest = value; }
         }
-        public double Biceps {
+        public double Biceps
+        {
             get { return _biceps; }
             set { _biceps = value; }
         }
-        public double Height {
+        public double Height
+        {
             get { return _height; }
             set { _height = value; }
         }
-        public string Notes {
+        public string Notes
+        {
             get { return _notes; }
             set { _notes = value; }
         }
@@ -63,9 +64,16 @@ namespace Ciezarki.MVVM.Model
             Height = height;
             Notes = notes;
         }
+
+        public ProgressLog()
+        {
+         Notes = string.Empty;
+        }
         public override string ToString()
         {
             return $"{Id}: User Id: {UserId} on {Date.ToShortDateString()} - {Weight} kg, Chest: {Chest}, Biceps: {Biceps}, Height: {Height} cm, Notes: {Notes} ";
         }
+
+        public User User { get; set; }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ciezarki.MVVM.Model
+﻿namespace Ciezarki.MVVM.Model
 {
     internal class Workout
     {
@@ -33,5 +27,21 @@ namespace Ciezarki.MVVM.Model
             Create_date = create_date;
             Notes = notes;
         }
+
+        public Workout()
+        {
+            Create_date = DateTime.Now;
+            Notes = string.Empty;
+
+        }
+
+
+        public override string ToString()
+        {
+            return Notes;
+        }
+
+        public ICollection<WorkoutExercises> WorkoutExercises { get; set; }
+        public ICollection<UserWorkout> UserWorkout { get; set; }
     }
 }

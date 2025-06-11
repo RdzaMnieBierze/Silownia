@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ciezarki.MVVM.Model
+﻿namespace Ciezarki.MVVM.Model
 {
     internal class Exercise
     {
@@ -14,6 +8,13 @@ namespace Ciezarki.MVVM.Model
             Name = name;
             Description = description;
             Muscle = muscle;
+        }
+        public Exercise()
+        {
+            Name = string.Empty;
+            Description = string.Empty;
+            Muscle = string.Empty;
+
         }
         private int _id;
         public int Id
@@ -40,5 +41,14 @@ namespace Ciezarki.MVVM.Model
             set { _muscle = value; }
             get { return _muscle; }
         }
+
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
+
+        public ICollection<WorkoutExercises> WorkoutExercises { get; set; }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ciezarki.MVVM.Model
+﻿namespace Ciezarki.MVVM.Model
 {
 
     internal class WorkoutExercises
@@ -56,6 +50,9 @@ namespace Ciezarki.MVVM.Model
             Reps_exercise = reps_exercise;
             Resttime_exercise = resttime_exercise;
         }
+
+        public Workout Workout { get; set; }
+        public Exercise Exercise { get; set; }
     }
 
 }

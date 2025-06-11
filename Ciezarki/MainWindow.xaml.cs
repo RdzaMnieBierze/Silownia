@@ -1,14 +1,6 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using Ciezarki.Core;
 using Ciezarki.MVVM.Viewmodel;
-using Ciezarki.Core;
+using System.Windows;
 
 namespace Ciezarki
 {
@@ -20,7 +12,12 @@ namespace Ciezarki
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainVM(new NavigationService()); 
+            DataContext = new MainVM(new NavigationService());
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

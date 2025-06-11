@@ -14,18 +14,22 @@
 
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                    <GradientStop Color="#FDE74C" Offset="0.0"/>
-                                    <GradientStop Color="#7A9D2F" Offset="1.0"/>
+                                    <GradientStop Color="#FF13344E" Offset="0.0"/>
+                                    <GradientStop Color="#1A4161" Offset="1.0"/>
                                 </LinearGradientBrush>
                             </Border.Background>
 
                             <TextBlock Text="{TemplateBinding Content}"
+                                   TextAlignment="Center"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Margin="10,25,10,25"
                                    FontSize="24"
                                    FontFamily="Resource/#Poppins"
-                                   TextWrapping="Wrap"/>
+                                   TextWrapping="Wrap" FontWeight="Bold" Foreground="White"
+                                   
+                                       />
+                            
 
                         </Border>
                     </ControlTemplate>

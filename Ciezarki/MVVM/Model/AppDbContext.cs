@@ -19,6 +19,9 @@ namespace Ciezarki.MVVM.Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().HasData(
+                new User(1,"Antek","abc@interia.pl","haslo",DateTime.Now)
+                );
             
             modelBuilder.Entity <Exercise>().HasData(
                new Exercise(1, "Pompki klasyczne", "Przyjmij pozycję podporu przodem z rękami na szerokość barków. Utrzymując ciało w jednej linii, zegnij łokcie i opuść klatkę piersiową w kierunku podłogi. Następnie wyprostuj ręce, wracając do pozycji wyjściowej.", "klatka piersiowa"),

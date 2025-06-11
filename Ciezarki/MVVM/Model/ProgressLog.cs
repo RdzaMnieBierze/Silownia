@@ -64,6 +64,11 @@
             Height = height;
             Notes = notes;
         }
+
+        public ProgressLog()
+        {
+         Notes = string.Empty;
+        }
         public override string ToString()
         {
             return $"{Id}: User Id: {UserId} on {Date.ToShortDateString()} - {Weight} kg, Chest: {Chest}, Biceps: {Biceps}, Height: {Height} cm, Notes: {Notes} ";

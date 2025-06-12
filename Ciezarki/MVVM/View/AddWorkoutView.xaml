@@ -4,17 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ciezarki.MVVM.View"
-             xmlns:core="clr-namespace:Ciezarki.Core"
+             xmlns:core="clr-namespace:Ciezarki.Core" xmlns:viewmodel="clr-namespace:Ciezarki.MVVM.Viewmodel" d:DataContext="{d:DesignInstance Type=viewmodel:AddWorkoutVM}"
              mc:Ignorable="d" 
              d:DesignHeight="430" d:DesignWidth="700">
-    <Grid>
+
+<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
@@ -34,8 +35,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,10,0  ">
-            <ComboBox Width="170" Height="54">
-                
+            <ComboBox Width="170" Height="54" ItemsSource="{Binding Exercises}" SelectedItem="{Binding SelectedExercise}">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1">
                         <GradientStop/>
@@ -51,7 +51,7 @@
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128"/>
             <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
-
+            <ListBox Grid.Row="2" ItemsSource="{Binding WorkoutExercisess}"/>
         </StackPanel>
 
     </Grid>

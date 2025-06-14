@@ -14,23 +14,26 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3.5*"/>
+    
+            <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <TextBox Style="{StaticResource InputTextBox}"
+            
+            <TextBox Style="{StaticResource InputTextBox}" Text="{Binding Name}"
                  core:TextBoxHelper.Title="Nazwa treningu" 
                  core:TextBoxHelper.BorderWidth="450" core:TextBoxHelper.BorderHeight="55"/>
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Data treningu [dd.mm.rrrr]"
-                  core:TextBoxHelper.BorderWidth="200" core:TextBoxHelper.BorderHeight="55"/>
+            <DatePicker Width="200" SelectedDate="{Binding Date}"/>
         </StackPanel>
 
 
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Notatki" 
+            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Notatki" Text="{Binding Notes}"
                      core:TextBoxHelper.BorderWidth="660" core:TextBoxHelper.BorderHeight="75"/>
         </StackPanel>
 
@@ -43,16 +46,29 @@
                     </LinearGradientBrush>
                 </ComboBox.Background>
             </ComboBox>
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń"
+            <TextBox x:Name="textbox_reps" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń" Text="{Binding Reps}"
                        core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="130"/>
             <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość serii"
+                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128" Text="{Binding Sets}"/>
+            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Obciążenie" Text="{Binding Load}"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128"/>
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Obciążenie"
-                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128"/>
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]"
+            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]" Text="{Binding Rest_time}"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
-            <ListBox Grid.Row="2" ItemsSource="{Binding WorkoutExercisess}"/>
         </StackPanel>
-
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Command="{Binding AddExerciseCommand}" Content="Dodaj ćwiczenie"/>
+            <Button Grid.Column="1" Command="{Binding LoadExerciseCommand}" Content="Załaduj ćwiczenie"/>
+            <Button Grid.Column="2" Command="{Binding EditExerciseCommand}" Content ="Edytuj ćwiczenie"/>
+            <Button Grid.Column="3" Command="{Binding DeleteExerciseCommand}" Content ="Usuń ćwiczenie"/>
+        </Grid>
+  
+        <ListBox Grid.Row="4" ItemsSource="{Binding WorkoutExercisess}" SelectedItem="{Binding SelectedWorkoutExercise}"/>
+        <Button Content="ZAPISZ TRENING" Command="{Binding SaveWorkout}"  Grid.Row="5"/>
     </Grid>
 </UserControl>

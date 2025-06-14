@@ -8,9 +8,8 @@
         xmlns:view="clr-namespace:Ciezarki.MVVM.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000"
-        WindowStyle="None"
-        Background="Transparent"
-        AllowsTransparency="True">
+        WindowStyle="SingleBorderWindow"
+        Background="Transparent">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:AddWorkoutVM}">
             <view:AddWorkoutView/>

@@ -34,6 +34,7 @@ namespace Ciezarki.MVVM.Viewmodel
 
         public ICommand NavigateAddProgressLog { get; }
         public ICommand SignInCommand { get; }
+        public ICommand CreateAccountCommand { get; }
         public MainVM(Core.NavigationService navigationService)
         {
 
@@ -70,11 +71,15 @@ namespace Ciezarki.MVVM.Viewmodel
             //}
 
             SignInCommand = new RelayCommand(_ => SignIn(), _ => true);
-
+            CreateAccountCommand = new RelayCommand(_ => CreateAccount(), _ => true);
 
 
         }
         private bool _isLoginPanelVisible = true;
+        private string _usernameRegistration;
+        private string _emailRegistration;
+        private string _passwordRegistration;
+        private string _repeatedPasswordRegistration;
 
         public bool IsLoginPanelVisible
         {
@@ -84,14 +89,84 @@ namespace Ciezarki.MVVM.Viewmodel
                 if (_isLoginPanelVisible != value)
                 {
                     _isLoginPanelVisible = value;
-                    OnPropertyChanged(nameof(_isLoginPanelVisible));
+                    OnPropertyChanged(nameof(IsLoginPanelVisible));
                 }
             }
         }
+        public string UsernameRegistration
+        {
+            get => _usernameRegistration;
+            set
+            {
+                _usernameRegistration = value;
+                OnPropertyChanged(nameof(UsernameRegistration));
+            }
+        }
+        public string EmailRegistration
+        {
+            get => _emailRegistration;
+            set
+            {
+                _emailRegistration = value;
+                OnPropertyChanged(nameof(EmailRegistration));
+            }
+        }
+        public string PasswordRegistration
+        {
+            get => _passwordRegistration;
+            set
+            {
+                _passwordRegistration = value;
+                OnPropertyChanged(nameof(PasswordRegistration));
+            }
+        }
+        public string RepeatedPasswordRegistration
+        {
+            get => _repeatedPasswordRegistration;
+            set
+            {
+                _repeatedPasswordRegistration = value;
+                OnPropertyChanged(nameof(RepeatedPasswordRegistration));
+            }
+        }
+
         public void SignIn()
         {
             _isLoginPanelVisible = !IsLoginPanelVisible;
             OnPropertyChanged(nameof(IsLoginPanelVisible));
+        }
+        public void CreateAccount()
+        {
+            if (string.IsNullOrEmpty(UsernameRegistration) || string.IsNullOrEmpty(EmailRegistration) || string.IsNullOrEmpty(PasswordRegistration) || string.IsNullOrEmpty(RepeatedPasswordRegistration))
+            {
+                MessageBox.Show("Aby utworzyć konto należy uzupełnić wszystkie pola.","Błędne dane",MessageBoxButton.OK,MessageBoxImage.Information);
+                return;
+            }
+            if (PasswordRegistration != RepeatedPasswordRegistration)
+            {
+                {
+                    MessageBox.Show("Podane hasła nie są identyczne. Spróbuj jeszcze raz.", "Błędne dane", MessageBoxButton.OK,MessageBoxImage.Warning);
+                    return;
+                }
+            }
+            using (var context = new AppDbContext())
+            {
+                context.Database.EnsureCreated();
+                var u = new User();
+                u.Username = UsernameRegistration;
+                u.Password = PasswordRegistration;
+                u.Email = EmailRegistration;
+                u.CreatedAt = DateTime.Now;
+
+                context.Users.Add(u);
+                context.SaveChanges();
+            }
+            MessageBox.Show("Poprawnie utworzono użytkownika. Zaloguj się, aby przejść dalej.");
+
+            UsernameRegistration = "";
+            EmailRegistration = "";
+            PasswordRegistration = "";
+            RepeatedPasswordRegistration = "";
         }
     }
 }

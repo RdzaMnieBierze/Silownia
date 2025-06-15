@@ -146,7 +146,7 @@ namespace Ciezarki.MVVM.Viewmodel
             {
                 Exercises.Add(exercise);
             }
-            MessageBox.Show(Exercises.Count().ToString());
+            //MessageBox.Show(Exercises.Count().ToString());
 
 
 

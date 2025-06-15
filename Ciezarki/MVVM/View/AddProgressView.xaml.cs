@@ -23,7 +23,9 @@ namespace Ciezarki.MVVM.View
         public AddProgressView()
         {
             InitializeComponent();
-            DataContext = new Viewmodel.AddProgressLogVM(); 
+     
         }
+
+  
     }
 }

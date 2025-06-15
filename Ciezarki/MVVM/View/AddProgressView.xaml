@@ -4,13 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ciezarki.MVVM.View"
+              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
               xmlns:core="clr-namespace:Ciezarki.Core"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -37,7 +39,17 @@
                  core:TextBoxHelper.Title="Wzrost:" 
                  Grid.Row="2"
                  Grid.Column=" 1"/>
-        <Button Command="{Binding SaveProgressCommand}" x:Name="AddProgressButton" Grid.Column="2" Grid.Row="3" Content="Zapisz progress" Style="{StaticResource GradientButtonStyle}"/>
+        <Button Command="{Binding SaveProgressCommand}" x:Name="AddProgressButton" Grid.Column="1" Grid.Row="3" Content="Zapisz progress" Style="{StaticResource GradientButtonStyle}" />
+
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" Grid.RowSpan="4" Grid.Column="2">
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="cm/kg" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Data" Labels="{Binding Labels}"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+        </lvc:CartesianChart>
+
 
 
     </Grid>

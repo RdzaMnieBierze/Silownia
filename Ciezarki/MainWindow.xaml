@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Ciezarki"
         xmlns:viewModel="clr-namespace:Ciezarki.MVVM.Viewmodel"
         xmlns:view="clr-namespace:Ciezarki.MVVM.View"
+        xmlns:helpers="clr-namespace:Ciezarki.Core"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000"
         WindowStyle="SingleBorderWindow"
@@ -181,12 +182,14 @@ BorderThickness="1.5">
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
-                            <TextBox Grid.Row="1"
+                             VerticalContentAlignment="Center"
+                             Text="{Binding UsernameSignIn, UpdateSourceTrigger=PropertyChanged}"/>
+                            <PasswordBox Grid.Row="1"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center"
+                             helpers:PasswordBoxAssistant.BoundPassword="{Binding PasswordSignIn, Mode=TwoWay}"/>
                             <Button Content="Zaloguj"
                             Grid.Column="1"
                             Grid.Row="2"
@@ -252,22 +255,26 @@ BorderThickness="1.5">
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center"
+                             Text="{Binding UsernameRegistration, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox Grid.Row="1"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
-                            <TextBox Grid.Row="2"
+                             VerticalContentAlignment="Center"
+                             Text="{Binding EmailRegistration, UpdateSourceTrigger=PropertyChanged}"/>
+                            <PasswordBox Grid.Row="2"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
-                            <TextBox Grid.Row="3"
+                             VerticalContentAlignment="Center"
+                             helpers:PasswordBoxAssistant.BoundPassword="{Binding PasswordRegistration, Mode=TwoWay}"/>
+                            <PasswordBox Grid.Row="3"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center"
+                              helpers:PasswordBoxAssistant.BoundPassword="{Binding RepeatedPasswordRegistration, Mode=TwoWay}"/>
                             <Button Content="Utwórz konto"
                             Grid.Column="1"
                             Grid.Row="4"
@@ -276,7 +283,8 @@ BorderThickness="1.5">
                             FontWeight="Bold"
                             Background="#FF173C59"
                             Foreground="White"
-                            BorderBrush="#FF173C59"/>
+                            BorderBrush="#FF173C59"
+                            Command="{Binding CreateAccountCommand}"/>
                         </Grid>
                     </Grid>
                 </Grid>

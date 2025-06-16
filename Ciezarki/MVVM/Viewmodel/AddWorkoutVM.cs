@@ -176,6 +176,7 @@ namespace Ciezarki.MVVM.Viewmodel
 
         private void SaveWorkout()
         {
+
         }
         private void EditExercise() {
             

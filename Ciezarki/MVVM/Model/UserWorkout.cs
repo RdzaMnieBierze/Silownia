@@ -51,6 +51,11 @@
 
         }
 
+        public override string ToString()
+        {
+            return Create_date.ToString() + " " + Name + " " + Id;
+        }
+
         public User User { get; set; }
         public Workout Workout { get; set; }
     }

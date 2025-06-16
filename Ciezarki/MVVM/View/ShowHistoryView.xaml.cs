@@ -23,6 +23,7 @@ namespace Ciezarki.MVVM.View
         public ShowHistoryView()
         {
             InitializeComponent();
+            DataContext = new MVVM.Viewmodel.ShowHistoryVM();
         }
     }
 }

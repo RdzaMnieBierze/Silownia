@@ -103,7 +103,7 @@ namespace Ciezarki.MVVM.Viewmodel
         private void LoadData()
         {
             var logs = _dbContext.ProgressLogs
-                .Where(p => p.UserId == 1)
+                .Where(p => p.UserId == DbData.UserId)
                 .OrderBy(p => p.Date)
                 .ToList();
 

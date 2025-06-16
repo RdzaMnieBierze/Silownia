@@ -197,6 +197,7 @@ BorderThickness="1.5">
                             Background="#FF173C59"
                             Foreground="White"
                             BorderBrush="#FF173C59"
+                            HorizontalAlignment="Center"
                             Command="{Binding SignInCommand}"/>
                         </Grid>
                         <Grid Grid.Row="1"
@@ -277,7 +278,8 @@ BorderThickness="1.5">
                             FontWeight="Bold"
                             Background="#FF173C59"
                             Foreground="White"
-                            BorderBrush="#FF173C59"/>
+                            BorderBrush="#FF173C59"
+                            HorizontalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Grid>

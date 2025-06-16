@@ -38,20 +38,14 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,10,0  ">
-            <ComboBox Width="170" Height="54" ItemsSource="{Binding Exercises}" SelectedItem="{Binding SelectedExercise}">
-                <ComboBox.Background>
-                    <LinearGradientBrush EndPoint="0,1">
-                        <GradientStop/>
-                        <GradientStop Offset="1"/>
-                    </LinearGradientBrush>
-                </ComboBox.Background>
-            </ComboBox>
+            <ComboBox ItemsSource="{Binding Exercises}" SelectedItem="{Binding SelectedExercise}" Style="{StaticResource StyledComboBox}"/>
+
             <TextBox x:Name="textbox_reps" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń" Text="{Binding Reps,Mode=TwoWay}" 
-                       core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="130"/>
+                       core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
             <TextBox x:Name="textbox_sets" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość serii"
-                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128" Text="{Binding Sets}"/>
+                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Text="{Binding Sets}"/>
             <TextBox x:Name="textbox_load" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Obciążenie" Text="{Binding Load}"
-                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128"/>
+                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
             <TextBox x:Name="textbox_resttime" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]" Text="{Binding Rest_time}"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
         </StackPanel>

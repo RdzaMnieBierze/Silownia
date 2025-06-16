@@ -53,7 +53,7 @@
 
         public override string ToString()
         {
-            return Create_date.ToString() + " " + Name + " " + Id;
+            return Create_date.ToShortDateString() + " " + Name + " " + Id;
         }
 
         public User User { get; set; }

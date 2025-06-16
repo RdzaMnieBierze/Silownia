@@ -38,7 +38,8 @@
                     core:TextBoxHelper.BorderWidth="170" core:TextBoxHelper.BorderHeight="95"/>
         </StackPanel>
         
-        <Button Grid.Row="3" Style="{StaticResource AcceptButton}" Content="Dodaj" core:ButtonHelper.ButtonWidth="170"/>
+        <Button Grid.Row="3" Style="{StaticResource AcceptButton}" Content="DODAJ" core:ButtonHelper.ButtonWidth="170"
+                />
 
 
     </Grid>

@@ -22,24 +22,29 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Dodaj Swój progress" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <Label Content="DODAJ SWÓJ PROGRESS" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Grid.ColumnSpan="2"/>
         <TextBox Text="{Binding Weight}" Style="{StaticResource InputTextBox}"
                  core:TextBoxHelper.Title="Waga:" 
+                 core:TextBoxHelper.BorderWidth="170"
                  Grid.Row="1"
                  Grid.Column=" 0"/>
         <TextBox  Text="{Binding Chest}" Style="{StaticResource InputTextBox}"
          core:TextBoxHelper.Title="Klata:" 
+                   core:TextBoxHelper.BorderWidth="170"
          Grid.Row="1"
          Grid.Column=" 1"/>
         <TextBox Text="{Binding Biceps}" Style="{StaticResource InputTextBox}"
                  core:TextBoxHelper.Title="Biceps:" 
+                  core:TextBoxHelper.BorderWidth="170"
                  Grid.Row="2"
                  Grid.Column=" 0"/>
         <TextBox  Text="{Binding Height}" Style="{StaticResource InputTextBox}"
                  core:TextBoxHelper.Title="Wzrost:" 
+                   core:TextBoxHelper.BorderWidth="170"
                  Grid.Row="2"
                  Grid.Column=" 1"/>
-        <Button Command="{Binding SaveProgressCommand}" x:Name="AddProgressButton" Grid.Column="1" Grid.Row="3" Content="Zapisz progress" Style="{StaticResource GradientButtonStyle}" />
+        <Button Command="{Binding SaveProgressCommand}" x:Name="AddProgressButton" Grid.Column="1" Grid.Row="3" Content="ZAPISZ PROGRESS" Style="{StaticResource GradientButtonStyle}" 
+                Margin="5 50 5 5"/>
 
         <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" Grid.RowSpan="4" Grid.Column="2">
             <lvc:CartesianChart.AxisY>

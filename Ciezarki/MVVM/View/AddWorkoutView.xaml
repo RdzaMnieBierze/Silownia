@@ -48,11 +48,11 @@
             </ComboBox>
             <TextBox x:Name="textbox_reps" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń" Text="{Binding Reps}"
                        core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="130"/>
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość serii"
+            <TextBox x:Name="textbox_sets" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość serii"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128" Text="{Binding Sets}"/>
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Obciążenie" Text="{Binding Load}"
+            <TextBox x:Name="textbox_load" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Obciążenie" Text="{Binding Load}"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128"/>
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]" Text="{Binding Rest_time}"
+            <TextBox x:Name="textbox_resttime" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]" Text="{Binding Rest_time}"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
         </StackPanel>
         <Grid Grid.Row="3">
@@ -68,7 +68,7 @@
             <Button Grid.Column="3" Command="{Binding DeleteExerciseCommand}" Content ="Usuń ćwiczenie"/>
         </Grid>
   
-        <ListBox Grid.Row="4" ItemsSource="{Binding WorkoutExercisess}" SelectedItem="{Binding SelectedWorkoutExercise}"/>
+        <ListBox Grid.Row="4" ItemsSource="{Binding WorkoutsExercisess}" SelectedItem="{Binding SelectedWorkoutExercise}"/>
         <Button Content="ZAPISZ TRENING" Command="{Binding SaveWorkout}"  Grid.Row="5"/>
     </Grid>
 </UserControl>

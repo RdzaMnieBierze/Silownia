@@ -1,4 +1,5 @@
 ﻿using Ciezarki.MVVM.Model;
+using Ciezarki.MVVM.View;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -131,6 +132,7 @@ namespace Ciezarki.MVVM.Viewmodel
         }
         public AddWorkoutVM()
         {
+            WorkoutsExercisess = new ObservableCollection<WorkoutExercises>();
             _editWorkoutExercise = new WorkoutExercises();
             _selectedWorkoutExercise = new WorkoutExercises();
             _selectedExercise = new Exercise();
@@ -159,12 +161,32 @@ namespace Ciezarki.MVVM.Viewmodel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void DeleteExercise() { }
-        private void EditExercise() { }
-        private void LoadExercise() { }
+        private void DeleteExercise() {
+            WorkoutsExercisess.Remove(SelectedWorkoutExercise);
+        }
+        private void EditExercise() {
+        
+        }
+        private void LoadExercise() {
+            MessageBox.Show("SSSSs");
+            
+            Load = SelectedWorkoutExercise.Load_exercise.ToString();
+            
+            Reps = SelectedWorkoutExercise.Reps_exercise.ToString();
+            Sets = SelectedWorkoutExercise.Sets_exercise.ToString();
+            Rest_time = SelectedWorkoutExercise.Resttime_exercise.ToString();
+            SelectedExercise = SelectedWorkoutExercise.Exercise;
+
+        }
         public void AddExercise()
         {
-            MessageBox.Show(EditWorkoutExercise.ToString());
+            if(SelectedExercise.Id  != null)
+            {
+                EditWorkoutExercise.Id_exercise = SelectedExercise.Id;
+                EditWorkoutExercise.Exercise = SelectedExercise;
+                WorkoutsExercisess.Add(EditWorkoutExercise);
+            }
+
         }
         protected void OnPropertyChanged(string name)
         {

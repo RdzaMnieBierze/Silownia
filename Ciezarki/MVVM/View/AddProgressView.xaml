@@ -27,7 +27,7 @@
                  core:TextBoxHelper.Title="Waga:" 
                  core:TextBoxHelper.BorderWidth="170"
                  Grid.Row="1"
-                 Grid.Column=" 0"/>
+                 Grid.Column=" 0"/>        
         <TextBox  Text="{Binding Chest}" Style="{StaticResource InputTextBox}"
          core:TextBoxHelper.Title="Klata:" 
                    core:TextBoxHelper.BorderWidth="170"

@@ -10,6 +10,9 @@
     <Compile Update="MVVM\View\AddWorkoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\View\ShowHistoryView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -19,6 +22,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\View\AddWorkoutView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\View\ShowHistoryView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\AcceptButton.xaml">

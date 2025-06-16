@@ -21,6 +21,9 @@
         <DataTemplate DataType="{x:Type viewModel:AddExerciseVM}">
             <view:AddExerciseView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ShowHistoryVM}">
+            <view:ShowHistoryView/>
+        </DataTemplate>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
 
@@ -64,7 +67,7 @@
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
                 <RadioButton Content="NOWY TRENING" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddWorkout}" />
                 <RadioButton  Content="PROGRESY"  Command="{Binding NavigateAddProgressLog}" Style="{StaticResource MenuButtonTheme}" />
-                <RadioButton  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" />
+                <RadioButton  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateShowHistory}"/>
                 <RadioButton Content="Dodaj ćwiczenie" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddExercise}"/>
 
             </StackPanel>

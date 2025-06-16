@@ -46,7 +46,7 @@
                     </LinearGradientBrush>
                 </ComboBox.Background>
             </ComboBox>
-            <TextBox x:Name="textbox_reps" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń" Text="{Binding Reps}"
+            <TextBox x:Name="textbox_reps" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń" Text="{Binding Reps,Mode=TwoWay}" 
                        core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="130"/>
             <TextBox x:Name="textbox_sets" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość serii"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Width="128" Text="{Binding Sets}"/>
@@ -68,7 +68,7 @@
             <Button Grid.Column="3" Command="{Binding DeleteExerciseCommand}" Content ="Usuń ćwiczenie"/>
         </Grid>
   
-        <ListBox Grid.Row="4" ItemsSource="{Binding WorkoutsExercisess}" SelectedItem="{Binding SelectedWorkoutExercise}"/>
-        <Button Content="ZAPISZ TRENING" Command="{Binding SaveWorkout}"  Grid.Row="5"/>
+        <ListBox Grid.Row="4" ItemsSource="{Binding WorkoutsExercisess}" SelectedItem="{Binding SelectedWorkoutExercise}" SelectedIndex="{Binding SelectedWorkoutExercisesIndex}"/>
+        <Button Content="ZAPISZ TRENING" Command="{Binding SaveWorkoutCommand}"  Grid.Row="5"/>
     </Grid>
 </UserControl>

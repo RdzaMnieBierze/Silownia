@@ -10,14 +10,18 @@ namespace Ciezarki.MVVM.Viewmodel
 {
     class AddWorkoutVM : BaseVM
     {
-
+        private UserWorkout _editUserWorkout;
+        public UserWorkout EditUserWorkout
+        {
+            set {  _editUserWorkout = value; }
+            get { return _editUserWorkout; }
+        }
         private Workout _workout;
         public ICommand AddExerciseCommand { get; }
         public ICommand LoadExerciseCommand { get; }
         public ICommand EditExerciseCommand { get; }
         public ICommand DeleteExerciseCommand { get; }
-
-       
+        public ICommand SaveWorkoutCommand { get; }
 
         private Exercise _selectedExercise;
         public Exercise SelectedExercise
@@ -50,13 +54,13 @@ namespace Ciezarki.MVVM.Viewmodel
 
         public WorkoutExercises SelectedWorkoutExercise
         {
+           
             set { 
                 _selectedWorkoutExercise = value;
                 OnPropertyChanged(nameof(SelectedWorkoutExercise));
 
             }
-            get { return _selectedWorkoutExercise;
-            }
+            get => _selectedWorkoutExercise;
         }
 
         public ObservableCollection<WorkoutExercises> WorkoutsExercisess { get; set; }
@@ -104,6 +108,8 @@ namespace Ciezarki.MVVM.Viewmodel
 
             }
         }
+
+        public int SelectedWorkoutExercisesIndex { get; set; }
         public string? Load
         {
             get => _editWorkoutExercise.Load_exercise.ToString();
@@ -133,11 +139,12 @@ namespace Ciezarki.MVVM.Viewmodel
         public AddWorkoutVM()
         {
             WorkoutsExercisess = new ObservableCollection<WorkoutExercises>();
+            Exercises = new ObservableCollection<Exercise>();
+            _editUserWorkout = new UserWorkout();
             _editWorkoutExercise = new WorkoutExercises();
             _selectedWorkoutExercise = new WorkoutExercises();
             _selectedExercise = new Exercise();
             _workout = new Workout();
-            Exercises = new ObservableCollection<Exercise>();
             _dbContext = new AppDbContext();
             _dbContext.Database.EnsureCreated();
 
@@ -156,26 +163,38 @@ namespace Ciezarki.MVVM.Viewmodel
             EditExerciseCommand = new RelayCommand(_ => EditExercise(), _ => true);
             DeleteExerciseCommand = new RelayCommand(_ => DeleteExercise(), _ => true);
             AddExerciseCommand = new RelayCommand(_ => AddExercise(), _ => true);
-
+            SaveWorkoutCommand = new RelayCommand(_ => SaveWorkout(), _ => true);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+
         private void DeleteExercise() {
-            WorkoutsExercisess.Remove(SelectedWorkoutExercise);
+            OnPropertyChanged(nameof(WorkoutsExercisess));
+            WorkoutsExercisess.RemoveAt(SelectedWorkoutExercisesIndex);
+        }
+
+        private void SaveWorkout()
+        {
         }
         private void EditExercise() {
-        
+            
+            if (SelectedWorkoutExercisesIndex >= 0)
+            {
+                WorkoutsExercisess.Insert(SelectedWorkoutExercisesIndex, EditWorkoutExercise);
+                WorkoutsExercisess.RemoveAt(SelectedWorkoutExercisesIndex);
+            }
         }
         private void LoadExercise() {
             MessageBox.Show("SSSSs");
-            
-            Load = SelectedWorkoutExercise.Load_exercise.ToString();
-            
-            Reps = SelectedWorkoutExercise.Reps_exercise.ToString();
-            Sets = SelectedWorkoutExercise.Sets_exercise.ToString();
-            Rest_time = SelectedWorkoutExercise.Resttime_exercise.ToString();
+            EditWorkoutExercise = new WorkoutExercises();
+            EditWorkoutExercise.Load_exercise = SelectedWorkoutExercise.Load_exercise;
+            EditWorkoutExercise.Reps_exercise = SelectedWorkoutExercise.Reps_exercise;
+            EditWorkoutExercise.Sets_exercise = SelectedWorkoutExercise.Sets_exercise;
+            EditWorkoutExercise.Resttime_exercise = SelectedWorkoutExercise.Resttime_exercise;
+            OnPropertyChanged(nameof(EditWorkoutExercise));
             SelectedExercise = SelectedWorkoutExercise.Exercise;
+
 
         }
         public void AddExercise()
@@ -186,6 +205,7 @@ namespace Ciezarki.MVVM.Viewmodel
                 EditWorkoutExercise.Exercise = SelectedExercise;
                 WorkoutsExercisess.Add(EditWorkoutExercise);
             }
+            
 
         }
         protected void OnPropertyChanged(string name)
@@ -197,6 +217,7 @@ namespace Ciezarki.MVVM.Viewmodel
         {
             _dbContext.Workouts.Add(workout);
             _dbContext.SaveChanges();
+
         }
 
 

@@ -39,7 +39,7 @@
             set { _name = value; }
             get { return _name; }
         }
-
+        public UserWorkout() { }
         public UserWorkout(int id, int id_user, int id_workout, DateTime create_date, DateTime plan_date, string name)
         {
             Id = id;

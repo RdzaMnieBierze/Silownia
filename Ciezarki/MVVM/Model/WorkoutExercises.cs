@@ -1,9 +1,12 @@
-﻿namespace Ciezarki.MVVM.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Ciezarki.MVVM.Model
 {
 
     internal class WorkoutExercises
     {
 
+        [Key]
         private int _id;
         public int Id
         {
@@ -60,7 +63,8 @@
             Load_exercise = load_exercise;
         }
 
-        public WorkoutExercises() { }
+        public WorkoutExercises() {
+        }
         public override string ToString()
         {
             return Id_workout +  "+" + Id_exercise + ","+ Reps_exercise  +"," + Sets_exercise + ","+ Load_exercise  + "," + Resttime_exercise;

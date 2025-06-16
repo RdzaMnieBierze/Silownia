@@ -75,11 +75,13 @@ namespace Ciezarki.MVVM.Viewmodel
 
 
         }
-        private bool _isLoginPanelVisible = true;
+        private bool _isLoginPanelVisible = true;//zmień na false żeby ukryć panel logowania
         private string _usernameRegistration;
         private string _emailRegistration;
         private string _passwordRegistration;
         private string _repeatedPasswordRegistration;
+        private string _usernameSignIn;
+        private string _passwordSignIn;
 
         public bool IsLoginPanelVisible
         {
@@ -129,17 +131,84 @@ namespace Ciezarki.MVVM.Viewmodel
                 OnPropertyChanged(nameof(RepeatedPasswordRegistration));
             }
         }
+        public string UsernameSignIn
+        {
+            get => _usernameSignIn;
+            set
+            {
+                _usernameSignIn = value;
+                OnPropertyChanged(nameof(UsernameSignIn));
+            }
+        }
+        public string PasswordSignIn
+        {
+            get => _passwordSignIn;
+            set
+            {
+                _passwordSignIn = value;
+                OnPropertyChanged(nameof(PasswordSignIn));
+            }
+        }
 
         public void SignIn()
         {
-            _isLoginPanelVisible = !IsLoginPanelVisible;
-            OnPropertyChanged(nameof(IsLoginPanelVisible));
+            if (string.IsNullOrEmpty(UsernameSignIn) || string.IsNullOrEmpty(PasswordSignIn))
+            {
+                MessageBox.Show("Należy uzupełnić wszystkie pola, aby się zalogować.", "Błędne dane", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            bool userExist;
+            bool isPasswordCorrect;
+            using (var context = new AppDbContext())
+            {
+                userExist = context.Users.Any(u => u.Username == UsernameSignIn);
+                isPasswordCorrect = context.Users.Any(u => u.Username == UsernameSignIn && u.Password == PasswordSignIn);
+            }
+            if (userExist)
+            {
+                if (isPasswordCorrect)
+                {
+                    using (var context = new AppDbContext())
+                    {
+                        var user = context.Users
+                            .FirstOrDefault(u => u.Username == UsernameSignIn && u.Password == PasswordSignIn);
+
+                        if (user != null)
+                        {
+                            DbData.SetUserId(user.Id);
+                        }
+
+                    }
+                    _isLoginPanelVisible = !IsLoginPanelVisible;
+                    OnPropertyChanged(nameof(IsLoginPanelVisible));
+                    return;
+                    
+                }else
+                {
+                    MessageBox.Show("Niepoprawna nazwa użytkownika lub hasło.", "Błędne dane", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+            }else
+            {
+                MessageBox.Show("Podany użytkownik nie istnieje. Spróbuj jeszcze raz lub zarejestruj się.", "Błędne dane", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
         }
         public void CreateAccount()
         {
             if (string.IsNullOrEmpty(UsernameRegistration) || string.IsNullOrEmpty(EmailRegistration) || string.IsNullOrEmpty(PasswordRegistration) || string.IsNullOrEmpty(RepeatedPasswordRegistration))
             {
-                MessageBox.Show("Aby utworzyć konto należy uzupełnić wszystkie pola.","Błędne dane",MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show("Należy wypełnić wszystkie pola, aby się zarejestrować.","Błędne dane",MessageBoxButton.OK,MessageBoxImage.Information);
+                return;
+            }
+            bool userExist;
+            using (var context = new AppDbContext())
+            {
+                userExist = context.Users.Any(u => u.Username == UsernameRegistration);
+            }
+            if (userExist)
+            {
+                MessageBox.Show("Podana nazwa użytkownika jest już zajęta.", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             if (PasswordRegistration != RepeatedPasswordRegistration)

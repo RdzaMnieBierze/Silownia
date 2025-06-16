@@ -9,6 +9,7 @@ namespace Ciezarki.MVVM.Model
     static class DbData
     {
         public static int UserId { get; set; } = 1;
+        //DbData.UserId - aby pobrać id obecnie zalogowanego użytkownika
         public static void SetUserId(int userId)
         {
             UserId = userId;

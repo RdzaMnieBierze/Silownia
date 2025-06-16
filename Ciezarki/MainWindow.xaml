@@ -182,12 +182,14 @@ BorderThickness="1.5">
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
-                            <TextBox Grid.Row="1"
+                             VerticalContentAlignment="Center"
+                             Text="{Binding UsernameSignIn, UpdateSourceTrigger=PropertyChanged}"/>
+                            <PasswordBox Grid.Row="1"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center"
+                             helpers:PasswordBoxAssistant.BoundPassword="{Binding PasswordSignIn, Mode=TwoWay}"/>
                             <Button Content="Zaloguj"
                             Grid.Column="1"
                             Grid.Row="2"

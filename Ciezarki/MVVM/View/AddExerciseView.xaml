@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Ciezarki.MVVM.View"
              xmlns:core="clr-namespace:Ciezarki.Core"
              mc:Ignorable="d" 
-             d:DesignHeight="430" d:DesignWidth="700">
+             d:DesignHeight="600" d:DesignWidth="960">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

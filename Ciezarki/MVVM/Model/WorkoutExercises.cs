@@ -1,9 +1,12 @@
-﻿namespace Ciezarki.MVVM.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Ciezarki.MVVM.Model
 {
 
     internal class WorkoutExercises
     {
 
+        [Key]
         private int _id;
         public int Id
         {
@@ -29,10 +32,18 @@
             get { return _sets_exercise; }
         }
         private int _reps_exercise;
+       
         public int Reps_exercise
         {
             set { _reps_exercise = value; }
             get { return _reps_exercise; }
+        }
+
+        private double _load_exercise;
+        public double Load_exercise
+        {
+            set { _load_exercise = value; }
+            get { return _load_exercise; }
         }
         private int _resttime_exercise;
         public int Resttime_exercise
@@ -41,7 +52,7 @@
             get { return _resttime_exercise; }
         }
 
-        public WorkoutExercises(int id, int id_workout, int id_exercise, int sets_exercise, int reps_exercise, int resttime_exercise)
+        public WorkoutExercises(int id, int id_workout, int id_exercise, int sets_exercise, int reps_exercise, int resttime_exercise,int load_exercise)
         {
             Id = id;
             Id_workout = id_workout;
@@ -49,8 +60,15 @@
             Sets_exercise = sets_exercise;
             Reps_exercise = reps_exercise;
             Resttime_exercise = resttime_exercise;
+            Load_exercise = load_exercise;
         }
 
+        public WorkoutExercises() {
+        }
+        public override string ToString()
+        {
+            return Id_workout +  "+" + Id_exercise + ","+ Reps_exercise  +"," + Sets_exercise + ","+ Load_exercise  + "," + Resttime_exercise;
+        }
         public Workout Workout { get; set; }
         public Exercise Exercise { get; set; }
     }

@@ -11,8 +11,8 @@
                     Margin="10, 2, 0, 10" Width="{Binding Path=(helpers:ButtonHelper.ButtonWidth), RelativeSource={RelativeSource TemplatedParent}}">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                <GradientStop Color="#FDE74C" Offset="0.0"/>
-                                <GradientStop Color="#7A9D2F" Offset="1.0"/>
+                                <GradientStop Color="#143E59" Offset="0.0"/>
+                                <GradientStop Color="#143E59" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Border.Background>
 
@@ -20,7 +20,9 @@
                                    FontFamily="Resource/#Poppins"
                                    FontSize="16"
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center"
+                                   Foreground="AntiqueWhite"
+                                   />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

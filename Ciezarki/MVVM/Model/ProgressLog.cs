@@ -67,6 +67,7 @@
 
         public ProgressLog()
         {
+
          Notes = string.Empty;
         }
         public override string ToString()

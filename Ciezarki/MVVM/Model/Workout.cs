@@ -1,7 +1,14 @@
-﻿namespace Ciezarki.MVVM.Model
+﻿using System.Text.Json.Serialization;
+
+namespace Ciezarki.MVVM.Model
 {
     internal class Workout
     {
+
+        private string _name;
+        public string Name { 
+            set { _name = value; }
+            get { return _name; } }
         private int _id;
         public int Id
         {

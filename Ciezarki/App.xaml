@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="Themes/InputTextBox.xaml"/>
                 <ResourceDictionary Source="Themes/AcceptButton.xaml"/>
                 <ResourceDictionary Source="/Themes/GradientButton.xaml"/>
+                <ResourceDictionary Source="/Themes/ComboBox.xaml"/>
+                <ResourceDictionary Source="/Themes/ListBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:Ciezarki"
         xmlns:viewModel="clr-namespace:Ciezarki.MVVM.Viewmodel"
         xmlns:view="clr-namespace:Ciezarki.MVVM.View"
+        xmlns:helpers="clr-namespace:Ciezarki.Core"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000"
-        WindowStyle="None"
-        Background="Transparent"
-        AllowsTransparency="True">
+        Title="MainWindow" Height="720" Width="1280"
+        WindowStyle="SingleBorderWindow"
+        Background="Transparent">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:AddWorkoutVM}">
             <view:AddWorkoutView/>
@@ -20,6 +20,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModel:AddExerciseVM}">
             <view:AddExerciseView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ShowHistoryVM}">
+            <view:ShowHistoryView/>
         </DataTemplate>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
@@ -64,8 +67,8 @@
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
                 <RadioButton Content="NOWY TRENING" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddWorkout}" />
                 <RadioButton  Content="PROGRESY"  Command="{Binding NavigateAddProgressLog}" Style="{StaticResource MenuButtonTheme}" />
-                <RadioButton  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" />
-                <RadioButton Content="Dodaj ćwiczenie" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddExercise}"/>
+                <RadioButton  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateShowHistory}"/>
+                <RadioButton Content="DODAJ ĆWICZENIE" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddExercise}"/>
 
             </StackPanel>
 
@@ -182,12 +185,14 @@ BorderThickness="1.5">
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
-                            <TextBox Grid.Row="1"
+                             VerticalContentAlignment="Center"
+                             Text="{Binding UsernameSignIn, UpdateSourceTrigger=PropertyChanged}"/>
+                            <PasswordBox Grid.Row="1"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center"
+                             helpers:PasswordBoxAssistant.BoundPassword="{Binding PasswordSignIn, Mode=TwoWay}"/>
                             <Button Content="Zaloguj"
                             Grid.Column="1"
                             Grid.Row="2"
@@ -254,22 +259,26 @@ BorderThickness="1.5">
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center"
+                             Text="{Binding UsernameRegistration, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox Grid.Row="1"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
-                            <TextBox Grid.Row="2"
+                             VerticalContentAlignment="Center"
+                             Text="{Binding EmailRegistration, UpdateSourceTrigger=PropertyChanged}"/>
+                            <PasswordBox Grid.Row="2"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
-                            <TextBox Grid.Row="3"
+                             VerticalContentAlignment="Center"
+                             helpers:PasswordBoxAssistant.BoundPassword="{Binding PasswordRegistration, Mode=TwoWay}"/>
+                            <PasswordBox Grid.Row="3"
                              Grid.Column="1"
                              Margin="15,12,15,12"
                              FontSize="18"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center"
+                              helpers:PasswordBoxAssistant.BoundPassword="{Binding RepeatedPasswordRegistration, Mode=TwoWay}"/>
                             <Button Content="Utwórz konto"
                             Grid.Column="1"
                             Grid.Row="4"
@@ -279,7 +288,8 @@ BorderThickness="1.5">
                             Background="#FF173C59"
                             Foreground="White"
                             BorderBrush="#FF173C59"
-                            HorizontalAlignment="Center"/>
+                            HorizontalAlignment="Center"
+                            Command="{Binding CreateAccountCommand}"/>
                         </Grid>
                     </Grid>
                 </Grid>

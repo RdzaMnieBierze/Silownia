@@ -16,16 +16,14 @@ using System.Windows.Shapes;
 namespace Ciezarki.MVVM.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy AddProgressView.xaml
+    /// Logika interakcji dla klasy ShowHistoryView.xaml
     /// </summary>
-    public partial class AddProgressView : UserControl
+    public partial class ShowHistoryView : UserControl
     {
-        public AddProgressView()
+        public ShowHistoryView()
         {
             InitializeComponent();
-     
+            DataContext = new MVVM.Viewmodel.ShowHistoryVM();
         }
-
-  
     }
 }

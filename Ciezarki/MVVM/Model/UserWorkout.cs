@@ -39,7 +39,7 @@
             set { _name = value; }
             get { return _name; }
         }
-
+        public UserWorkout() { }
         public UserWorkout(int id, int id_user, int id_workout, DateTime create_date, DateTime plan_date, string name)
         {
             Id = id;
@@ -49,6 +49,11 @@
             Create_date = create_date;
             Plan_date = plan_date;
 
+        }
+
+        public override string ToString()
+        {
+            return "Data treningu: " + Create_date.ToShortDateString() + "\tNazwa: " + Name + "\tID: " + Id;
         }
 
         public User User { get; set; }

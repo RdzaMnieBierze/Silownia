@@ -26,30 +26,32 @@
             </Grid.RowDefinitions>
 
             <TextBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-                     Style="{StaticResource InputTextBox}" core:TextBoxHelper.BorderHeight="100"
+                     Style="{StaticResource InputTextBox}" core:TextBoxHelper.BorderHeight="105"
                      core:TextBoxHelper.BorderWidth="230" core:TextBoxHelper.Title="Szukaj po nazwie"
                      Text="{Binding NameSearch}"/>
 
             <TextBox Grid.Row="0" Grid.Column="1"
-                     Style="{StaticResource InputTextBox}" core:TextBoxHelper.BorderHeight="40"
+                     Style="{StaticResource InputTextBox}" core:TextBoxHelper.BorderHeight="45"
                      core:TextBoxHelper.BorderWidth="230" core:TextBoxHelper.Title="Od [dd.mm.rrrr]"
                      Text="{Binding DateAfter}"/>
             <TextBox Grid.Row="1" Grid.Column="1"
-                     Style="{StaticResource InputTextBox}" core:TextBoxHelper.BorderHeight="40"
+                     Style="{StaticResource InputTextBox}" core:TextBoxHelper.BorderHeight="45"
                      core:TextBoxHelper.BorderWidth="230" core:TextBoxHelper.Title="Do [dd.mm.rrrr]"
                      Text="{Binding DateBefore}"/>
-
-            <TextBlock Grid.Row="0" Grid.Column="2"
-                       Text="Sortuj po:" FontSize="18"/>
-            <ComboBox Grid.Row="1" Grid.Column="2"
-                      Style="{StaticResource StyledComboBox}"
-                      ItemsSource="{Binding SortList}"
-                      SelectedItem="{Binding sortBy}"/>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
+                <TextBlock Text="Sortuj po:" FontSize="18" FontFamily="/Resource/#Poppins"
+                           HorizontalAlignment="Center" Margin="5"/>
+                <ComboBox Style="{StaticResource StyledComboBox}"
+                          ItemsSource="{Binding SortList}"
+                          SelectedItem="{Binding sortBy}"
+                          core:ComboBoxHelper.HorizontalOffset="40"/>
+            </StackPanel>
 
         </Grid>
 
         <ListBox Grid.Row="1"
-                 ItemsSource="{Binding ListOfWorkouts}"/>
+                 ItemsSource="{Binding ListOfWorkouts}"
+                 Style="{StaticResource StyledListBox}"/>
 
 
     </Grid>

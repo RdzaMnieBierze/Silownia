@@ -38,7 +38,8 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,10,0  ">
-            <ComboBox ItemsSource="{Binding Exercises}" SelectedItem="{Binding SelectedExercise}" Style="{StaticResource StyledComboBox}"/>
+            <ComboBox ItemsSource="{Binding Exercises}" SelectedItem="{Binding SelectedExercise}" Style="{StaticResource StyledComboBox}"
+                      core:ComboBoxHelper.HorizontalOffset="-5"/>
 
             <TextBox x:Name="textbox_reps" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń" Text="{Binding Reps,Mode=TwoWay}" 
                        core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
@@ -62,7 +63,8 @@
             <Button Grid.Column="3" Command="{Binding DeleteExerciseCommand}" Content ="Usuń ćwiczenie"/>
         </Grid>
   
-        <ListBox Grid.Row="4" ItemsSource="{Binding WorkoutsExercisess}" SelectedItem="{Binding SelectedWorkoutExercise}" SelectedIndex="{Binding SelectedWorkoutExercisesIndex}"/>
+        <ListBox Grid.Row="4" ItemsSource="{Binding WorkoutsExercisess}" SelectedItem="{Binding SelectedWorkoutExercise}" SelectedIndex="{Binding SelectedWorkoutExercisesIndex}"
+                 Style="{StaticResource StyledListBox}"/>
         <Button Content="ZAPISZ TRENING" Command="{Binding SaveWorkoutCommand}"  Grid.Row="5"/>
     </Grid>
 </UserControl>

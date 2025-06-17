@@ -53,7 +53,7 @@
 
         public override string ToString()
         {
-            return Create_date.ToShortDateString() + " " + Name + " " + Id;
+            return "Data treningu: " + Create_date.ToShortDateString() + "\tNazwa: " + Name + "\tID: " + Id;
         }
 
         public User User { get; set; }

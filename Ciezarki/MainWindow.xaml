@@ -68,7 +68,7 @@
                 <RadioButton Content="NOWY TRENING" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddWorkout}" />
                 <RadioButton  Content="PROGRESY"  Command="{Binding NavigateAddProgressLog}" Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton  Content="HISTORIA TRENINGÓW" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateShowHistory}"/>
-                <RadioButton Content="Dodaj ćwiczenie" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddExercise}"/>
+                <RadioButton Content="DODAJ ĆWICZENIE" Style="{StaticResource MenuButtonTheme}" Command="{Binding NavigateAddExercise}"/>
 
             </StackPanel>
 

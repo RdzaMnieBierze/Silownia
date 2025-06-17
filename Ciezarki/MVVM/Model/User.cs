@@ -1,7 +1,10 @@
-﻿namespace Ciezarki.MVVM.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Ciezarki.MVVM.Model
 {
     internal class User
     {
+        [Key]
         private int _id;
         private string _username;
         private string _email;

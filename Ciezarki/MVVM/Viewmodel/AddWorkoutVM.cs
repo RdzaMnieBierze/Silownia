@@ -68,7 +68,12 @@ namespace Ciezarki.MVVM.Viewmodel
 
         private AppDbContext _dbContext;
 
-        
+        public DateTime Date {  get; set; } 
+        public string? Name
+        {
+            get;
+            set;
+        }
         public string? Notes
         {
             get => _workout.Notes.ToString();
@@ -138,6 +143,7 @@ namespace Ciezarki.MVVM.Viewmodel
         }
         public AddWorkoutVM()
         {
+         
             WorkoutsExercisess = new ObservableCollection<WorkoutExercises>();
             Exercises = new ObservableCollection<Exercise>();
             _editUserWorkout = new UserWorkout();
@@ -157,7 +163,7 @@ namespace Ciezarki.MVVM.Viewmodel
             }
             //MessageBox.Show(Exercises.Count().ToString());
 
-
+            Date = DateTime.Now;
 
             LoadExerciseCommand = new RelayCommand(_ => LoadExercise(), _ => true);
             EditExerciseCommand = new RelayCommand(_ => EditExercise(), _ => true);
@@ -176,7 +182,47 @@ namespace Ciezarki.MVVM.Viewmodel
 
         private void SaveWorkout()
         {
+<<<<<<< Updated upstream
 
+=======
+            _workout.Create_date = DateTime.Now;
+            _workout.Name = Name;
+            _workout.Notes = Notes;
+            _dbContext.Workouts.Add(_workout);
+            _dbContext.SaveChanges();
+            _editUserWorkout.Name = Name;
+            _editUserWorkout.Id_user = DbData.UserId;
+            _editUserWorkout.Id_workout = _workout.Id;
+            _editUserWorkout.Create_date = DateTime.Now;
+            _editUserWorkout.Plan_date = Date;
+            _dbContext.UserWorkouts.Add( _editUserWorkout );
+            _dbContext.SaveChanges();
+
+            for (int i = 0; i < WorkoutsExercisess.Count; i++)
+            {
+                var newWorkoutExercise = WorkoutsExercisess[i] as WorkoutExercises;
+                newWorkoutExercise.Id_workout = EditUserWorkout.Id;
+                _dbContext.Add( newWorkoutExercise );
+                MessageBox.Show(newWorkoutExercise.ToString());
+            }
+            _dbContext.SaveChanges();
+
+            MessageBox.Show(_editUserWorkout.ToString());
+            ClearAll();
+        }
+
+        private void ClearAll()
+        {
+            _workout = new Workout();
+            _editUserWorkout = new UserWorkout();
+            _editWorkoutExercise = new WorkoutExercises();
+            _selectedWorkoutExercise = null;
+            _selectedExercise = null;
+            Name = "";
+            Notes = "";
+            Date = DateTime.Now;
+            WorkoutsExercisess.Clear();
+>>>>>>> Stashed changes
         }
         private void EditExercise() {
             
@@ -202,9 +248,17 @@ namespace Ciezarki.MVVM.Viewmodel
         {
             if(SelectedExercise.Id  != null)
             {
-                EditWorkoutExercise.Id_exercise = SelectedExercise.Id;
-                EditWorkoutExercise.Exercise = SelectedExercise;
-                WorkoutsExercisess.Add(EditWorkoutExercise);
+                var newExercise = new WorkoutExercises
+                {
+                    Id_exercise = SelectedExercise.Id,
+                    Exercise = SelectedExercise,
+                    Load_exercise = EditWorkoutExercise.Load_exercise,
+                    Reps_exercise = EditWorkoutExercise.Reps_exercise,
+                    Sets_exercise = EditWorkoutExercise.Sets_exercise,
+                    Resttime_exercise = EditWorkoutExercise.Resttime_exercise
+                };
+
+                WorkoutsExercisess.Add(newExercise);
             }
             
 

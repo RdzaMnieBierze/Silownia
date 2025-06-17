@@ -5,7 +5,6 @@ namespace Ciezarki.MVVM.Model
 
     internal class WorkoutExercises
     {
-
         [Key]
         private int _id;
         public int Id
@@ -67,7 +66,7 @@ namespace Ciezarki.MVVM.Model
         }
         public override string ToString()
         {
-            return Id_workout +  "+" + Id_exercise + ","+ Reps_exercise  +"," + Sets_exercise + ","+ Load_exercise  + "," + Resttime_exercise;
+            return Exercise.Name + " " + Reps_exercise + " razy, " + Load_exercise + "kg obciążenia, " + Resttime_exercise + " sekund odpoczynku, " + Sets_exercise + " serii";
         }
         public Workout Workout { get; set; }
         public Exercise Exercise { get; set; }

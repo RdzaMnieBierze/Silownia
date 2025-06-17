@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Ciezarki.MVVM.Model
 {
@@ -9,7 +10,9 @@ namespace Ciezarki.MVVM.Model
         public string Name { 
             set { _name = value; }
             get { return _name; } }
+        [Key]
         private int _id;
+
         public int Id
         {
             set { _id = value; }

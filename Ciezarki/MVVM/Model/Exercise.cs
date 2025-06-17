@@ -1,4 +1,6 @@
-﻿namespace Ciezarki.MVVM.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Ciezarki.MVVM.Model
 {
     internal class Exercise
     {
@@ -16,6 +18,7 @@
             Muscle = string.Empty;
 
         }
+        [Key]
         private int _id;
         public int Id
         {

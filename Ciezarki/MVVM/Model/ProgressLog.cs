@@ -1,7 +1,10 @@
-﻿namespace Ciezarki.MVVM.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Ciezarki.MVVM.Model
 {
     internal class ProgressLog
     {
+        [Key]
         private int _id;
         private int _user_id;
         private DateTime _date;

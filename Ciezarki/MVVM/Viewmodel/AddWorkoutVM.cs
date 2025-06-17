@@ -180,35 +180,36 @@ namespace Ciezarki.MVVM.Viewmodel
             WorkoutsExercisess.RemoveAt(SelectedWorkoutExercisesIndex);
         }
 
+
         private void SaveWorkout()
         {
-<<<<<<< Updated upstream
-
-=======
-            _workout.Create_date = DateTime.Now;
-            _workout.Name = Name;
-            _workout.Notes = Notes;
-            _dbContext.Workouts.Add(_workout);
-            _dbContext.SaveChanges();
-            _editUserWorkout.Name = Name;
-            _editUserWorkout.Id_user = DbData.UserId;
-            _editUserWorkout.Id_workout = _workout.Id;
-            _editUserWorkout.Create_date = DateTime.Now;
-            _editUserWorkout.Plan_date = Date;
-            _dbContext.UserWorkouts.Add( _editUserWorkout );
-            _dbContext.SaveChanges();
-
-            for (int i = 0; i < WorkoutsExercisess.Count; i++)
+            if (Name != null & WorkoutsExercisess.Count > 0)
             {
-                var newWorkoutExercise = WorkoutsExercisess[i] as WorkoutExercises;
-                newWorkoutExercise.Id_workout = EditUserWorkout.Id;
-                _dbContext.Add( newWorkoutExercise );
-                MessageBox.Show(newWorkoutExercise.ToString());
-            }
-            _dbContext.SaveChanges();
+                _workout.Create_date = DateTime.Now;
+                _workout.Name = Name;
+                _workout.Notes = Notes;
+                _dbContext.Workouts.Add(_workout);
+                _dbContext.SaveChanges();
+                _editUserWorkout.Name = Name;
+                _editUserWorkout.Id_user = DbData.UserId;
+                _editUserWorkout.Id_workout = _workout.Id;
+                _editUserWorkout.Create_date = DateTime.Now;
+                _editUserWorkout.Plan_date = Date;
+                _dbContext.UserWorkouts.Add(_editUserWorkout);
+                _dbContext.SaveChanges();
 
-            MessageBox.Show(_editUserWorkout.ToString());
-            ClearAll();
+                for (int i = 0; i < WorkoutsExercisess.Count; i++)
+                {
+                    var newWorkoutExercise = WorkoutsExercisess[i] as WorkoutExercises;
+                    newWorkoutExercise.Id_workout = EditUserWorkout.Id;
+                    _dbContext.Add(newWorkoutExercise);
+                }
+                _dbContext.SaveChanges();
+                MessageBox.Show("Dodano ćwiczenie " + Name + "!");
+                ClearAll();
+            }
+            else MessageBox.Show("Proszę wypełnić nazwę treningu i zaznaczyć przynamniej 1 ćwiczenie");
+
         }
 
         private void ClearAll()
@@ -219,10 +220,11 @@ namespace Ciezarki.MVVM.Viewmodel
             _selectedWorkoutExercise = null;
             _selectedExercise = null;
             Name = "";
+            OnPropertyChanged(nameof(Name));
             Notes = "";
+            OnPropertyChanged(nameof(Notes));
             Date = DateTime.Now;
             WorkoutsExercisess.Clear();
->>>>>>> Stashed changes
         }
         private void EditExercise() {
             
@@ -233,7 +235,6 @@ namespace Ciezarki.MVVM.Viewmodel
             }
         }
         private void LoadExercise() {
-            MessageBox.Show("SSSSs");
             EditWorkoutExercise = new WorkoutExercises();
             EditWorkoutExercise.Load_exercise = SelectedWorkoutExercise.Load_exercise;
             EditWorkoutExercise.Reps_exercise = SelectedWorkoutExercise.Reps_exercise;

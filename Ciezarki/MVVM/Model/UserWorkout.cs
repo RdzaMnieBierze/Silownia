@@ -59,10 +59,6 @@
         public User User { get; set; }
         public Workout Workout { get; set; }
 
-        public override string ToString()
-        {
-            return "Id:" + Id + "User_id:" + Id_user + ",Workout_id:" + Id_workout + ",Create date:" + Create_date + ",Name:" + Name;
-        }
     }
 
 }

@@ -33,6 +33,9 @@
     <Page Update="Themes\ComboBox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\DataGrid.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\InputTextBox.xaml">
       <SubType>Designer</SubType>
     </Page>

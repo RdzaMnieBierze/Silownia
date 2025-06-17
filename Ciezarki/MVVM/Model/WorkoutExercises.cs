@@ -66,7 +66,7 @@ namespace Ciezarki.MVVM.Model
         }
         public override string ToString()
         {
-            return Exercise.Name + " " + Reps_exercise + " razy, " + Load_exercise + "kg obciążenia, " + Resttime_exercise + " sekund odpoczynku, " + Sets_exercise + " serii";
+            return Exercise?.Name + " " + Reps_exercise + " razy, " + Load_exercise + "kg obciążenia, " + Resttime_exercise + " sekund odpoczynku, " + Sets_exercise + " serii";
         }
         public Workout Workout { get; set; }
         public Exercise Exercise { get; set; }

@@ -1,11 +1,15 @@
 ﻿using Ciezarki.MVVM.Model;
 using LiveCharts;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Ciezarki.MVVM.Viewmodel
 {
@@ -47,20 +51,71 @@ namespace Ciezarki.MVVM.Viewmodel
             }
         }
         public List<UserWorkout>? ListOfWorkouts { get; set; }
+        private List<WorkoutExercises>? _specificWorkoutExercises;
+        public List<WorkoutExercises>? SpecificWorkoutExercises
+        {
+            get => _specificWorkoutExercises;
+            set
+            {
+                _specificWorkoutExercises = value;
+                OnPropertyChanged(nameof(SpecificWorkoutExercises));
+            }
+        }
+        private ObservableCollection<WorkoutExerciseDTO> _workoutExercises;
+        public ObservableCollection<WorkoutExerciseDTO> WorkoutExercises
+        {
+            get => _workoutExercises;
+            set
+            {
+                _workoutExercises = value;
+                OnPropertyChanged(nameof(WorkoutExercises));
+            }
+        }
+        private UserWorkout _selectedWorkout;
+        public UserWorkout SelectedWorkout
+        {
+            get => _selectedWorkout;
+            set
+            {
+                _selectedWorkout = value;
+                OnPropertyChanged(nameof(SelectedWorkout));
+            }
+        }
 
         private AppDbContext _dbContext;
+        public ICommand LoadSelectedWorkout { get; }
         public ShowHistoryVM()
         {
             _dbContext = new AppDbContext();
             _userWorkout = new UserWorkout();
             _workout = new Workout();
+            LoadSelectedWorkout = new RelayCommand(_ => LoadSpecificWorkout());
+            _specificWorkoutExercises = null;
 
             LoadWorkouts();
         }
-
         private void LoadWorkouts()
         {
             ListOfWorkouts = _dbContext.UserWorkouts.Where(p => p.Id_user == DbData.UserId).ToList();
+        }
+        private void LoadSpecificWorkout()
+        {
+            int selectedId = SelectedWorkout.Id_workout;
+            var query = from we in _dbContext.WorkoutExercises
+                        join ex in _dbContext.Exercises on we.Id_exercise equals ex.Id
+                        where we.Id_workout == selectedId
+                        select new WorkoutExerciseDTO
+                        {
+                            Name = ex.Name,
+                            Muscle = ex.Muscle,
+                            Reps = we.Reps_exercise,
+                            Sets = we.Sets_exercise,
+                            Load = we.Load_exercise,
+                            Resttime = we.Resttime_exercise
+                        };
+
+            var results = query.ToList();
+            WorkoutExercises = new ObservableCollection<WorkoutExerciseDTO>(results);
         }
     }
 }

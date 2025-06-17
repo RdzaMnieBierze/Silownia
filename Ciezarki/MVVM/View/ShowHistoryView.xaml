@@ -5,13 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ciezarki.MVVM.View"
              xmlns:core="clr-namespace:Ciezarki.Core"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="960">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -50,8 +52,21 @@
         </Grid>
 
         <ListBox Grid.Row="1"
-                 ItemsSource="{Binding ListOfWorkouts}"
+         ItemsSource="{Binding ListOfWorkouts}"
+         SelectedItem="{Binding SelectedWorkout}"
+         Style="{StaticResource StyledListBox}">
+
+        </ListBox>
+
+
+
+        <Button Grid.Row="2" Content="Wybierz trening" Command="{Binding LoadSelectedWorkout}"
+                Style="{StaticResource GradientButtonStyle}"/>
+
+        <ListBox Grid.Row="3"
+                 ItemsSource="{Binding WorkoutExercises}"
                  Style="{StaticResource StyledListBox}"/>
+
 
 
     </Grid>

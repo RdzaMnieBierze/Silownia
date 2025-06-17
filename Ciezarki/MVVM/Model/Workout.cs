@@ -48,7 +48,12 @@ namespace Ciezarki.MVVM.Model
 
         public override string ToString()
         {
-            return Notes;
+            string res = string.Empty;
+            foreach(var exer in WorkoutExercises)
+            {
+                res += exer.ToString();
+            }
+            return res;
         }
 
         public ICollection<WorkoutExercises> WorkoutExercises { get; set; }

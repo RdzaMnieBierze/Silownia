@@ -86,20 +86,6 @@ namespace Ciezarki.MVVM.Viewmodel
             }
         }
 
-        public bool CanSaveLog
-        {
-            get
-            {
-                return CheckData();
-            }
-
-            set
-            {
-                CanSaveLog = value;
-              
-            }
-        }
-
         private void LoadData()
         {
             var logs = _dbContext.ProgressLogs
@@ -155,6 +141,11 @@ namespace Ciezarki.MVVM.Viewmodel
         }
         private void SaveProgress()
         {
+            if(CheckData() == false)
+            {
+                MessageBox.Show("Wprowadź poprawne dane!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _progressLog.UserId = DbData.UserId; 
             _dbContext.Database.EnsureCreated();
             _progressLog.Date = DateTime.Now;
@@ -188,7 +179,7 @@ namespace Ciezarki.MVVM.Viewmodel
             OnPropertyChanged(nameof(Chest));
         }
 
-       public RelayCommand SaveProgressCommand => new RelayCommand(execute =>SaveProgress(),_=>CanSaveLog);
+       public RelayCommand SaveProgressCommand => new RelayCommand(execute =>SaveProgress());
 
 
 

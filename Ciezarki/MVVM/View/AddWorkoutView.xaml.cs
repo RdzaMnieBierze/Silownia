@@ -11,5 +11,6 @@ namespace Ciezarki.MVVM.View
         {
             InitializeComponent();
         }
+
     }
 }

@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockLogin">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="15,0,0,0"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#FF173C59"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+
+    <Style TargetType="{x:Type TextBox}" x:Key="TextBoxLogin">
+        <Setter Property="Margin" Value="15,12,15,12"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="#FF173C59"/>
+    </Style>
+
+    <Style TargetType="{x:Type PasswordBox}" x:Key="PasswordBoxLogin">
+        <Setter Property="Margin" Value="15,12,15,12"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="#FF173C59"/>
+    </Style>
+</ResourceDictionary>

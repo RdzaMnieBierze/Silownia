@@ -36,6 +36,9 @@ namespace Ciezarki.MVVM.Viewmodel
         public ICommand NavigateAddProgressLog { get; }
         public ICommand SignInCommand { get; }
         public ICommand CreateAccountCommand { get; }
+
+        private AddProgressLogVM _addProgressLogVM = new AddProgressLogVM();
+
         public MainVM(Core.NavigationService navigationService)
         {
 
@@ -47,9 +50,15 @@ namespace Ciezarki.MVVM.Viewmodel
             BaseVM addProgressLogVM = new AddProgressLogVM();
             BaseVM showHistoryVM = new ShowHistoryVM();
 
+
+
             NavigateAddWorkout = new RelayCommand(_ => _navigationService.NavigateTo(addWorkoutVM), _ => true);
             NavigateAddExercise = new RelayCommand(_ => _navigationService.NavigateTo(addExerciseVM), _ => true);
-            NavigateAddProgressLog = new RelayCommand(_ => _navigationService.NavigateTo(addProgressLogVM), _ => true);
+            NavigateAddProgressLog = new RelayCommand(_ =>
+            {
+                _navigationService.NavigateTo(_addProgressLogVM);
+                _addProgressLogVM.LoadData(); 
+            }, _ => true);
             NavigateShowHistory = new RelayCommand(_ => _navigationService.NavigateTo(showHistoryVM), _ => true); 
 
             CurrentVM = addWorkoutVM;
@@ -78,7 +87,7 @@ namespace Ciezarki.MVVM.Viewmodel
 
 
         }
-        private bool _isLoginPanelVisible = false;//zmień na false żeby ukryć panel logowania
+        private bool _isLoginPanelVisible = true;//zmień na false żeby ukryć panel logowania
         private string _usernameRegistration;
         private string _emailRegistration;
         private string _passwordRegistration;

@@ -86,7 +86,7 @@ namespace Ciezarki.MVVM.Viewmodel
             }
         }
 
-        private void LoadData()
+        public void LoadData()
         {
             var logs = _dbContext.ProgressLogs
                 .Where(p => p.UserId == DbData.UserId)

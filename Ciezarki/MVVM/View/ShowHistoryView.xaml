@@ -60,7 +60,7 @@
 
 
 
-        <Button Grid.Row="2" Content="Wybierz trening" Command="{Binding LoadSelectedWorkout}"
+        <Button Grid.Row="2" Content="WYBIERZ TRENING" Command="{Binding LoadSelectedWorkout}"
                 Style="{StaticResource GradientButtonStyle}"/>
 
         <ListBox Grid.Row="3"

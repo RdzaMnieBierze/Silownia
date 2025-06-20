@@ -19,26 +19,24 @@
         </Grid.RowDefinitions>
 
         <TextBox Grid.Row="0" Style="{StaticResource InputTextBox}"
+                 Text="{Binding Name}"
                 core:TextBoxHelper.Title="Nazwa ćwiczenia"
                 core:TextBoxHelper.BorderWidth="530" core:TextBoxHelper.BorderHeight="95"/>
 
         <TextBox Grid.Row="1" Style="{StaticResource InputTextBox}"
+                 Text="{Binding Description}"
                 core:TextBoxHelper.Title="Opis ćwiczenia"
                 core:TextBoxHelper.BorderWidth="530" core:TextBoxHelper.BorderHeight="160"/>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBox Style="{StaticResource InputTextBox}"
+                     Text="{Binding Muscle}"
+                     Grid.Row="2"
                     core:TextBoxHelper.Title="Aktywowany mięsień"
-                    core:TextBoxHelper.BorderWidth="170" core:TextBoxHelper.BorderHeight="95"/>
-            <TextBox Style="{StaticResource InputTextBox}"
-                    core:TextBoxHelper.Title="Aktywowany mięsień"
-                    core:TextBoxHelper.BorderWidth="170" core:TextBoxHelper.BorderHeight="95"/>
-            <TextBox Style="{StaticResource InputTextBox}"
-                    core:TextBoxHelper.Title="Aktywowany mięsień"
-                    core:TextBoxHelper.BorderWidth="170" core:TextBoxHelper.BorderHeight="95"/>
-        </StackPanel>
+                    core:TextBoxHelper.BorderWidth="530" core:TextBoxHelper.BorderHeight="95"/>
+          
+     
         
-        <Button Grid.Row="3" Style="{StaticResource AcceptButton}" Content="DODAJ" core:ButtonHelper.ButtonWidth="170"/>
+        <Button Grid.Row="3" Command="{Binding SaveExerciseCommand}" Style="{StaticResource AcceptButton}" Content="DODAJ" core:ButtonHelper.ButtonWidth="170"/>
 
 
     </Grid>

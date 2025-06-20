@@ -22,8 +22,8 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            
-            <TextBox Style="{StaticResource InputTextBox}" Text="{Binding Name}"
+
+            <TextBox Style="{StaticResource InputTextBox}" Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                  core:TextBoxHelper.Title="Nazwa treningu" 
                  core:TextBoxHelper.BorderWidth="600" core:TextBoxHelper.BorderHeight="55"/>
             <DatePicker Width="200" SelectedDate="{Binding Date}"/>
@@ -33,21 +33,21 @@
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Notatki" Text="{Binding Notes}"
+            <TextBox Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Notatki" Text="{Binding Notes,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      core:TextBoxHelper.BorderWidth="925" core:TextBoxHelper.BorderHeight="85"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" Margin="5,0,5,0">
-            <ComboBox ItemsSource="{Binding Exercises}" SelectedItem="{Binding SelectedExercise}" Style="{StaticResource StyledComboBox}"
+            <ComboBox ItemsSource="{Binding Exercises}" SelectedItem="{Binding SelectedExercise,Mode=TwoWay}" Style="{StaticResource StyledComboBox}"
                       core:ComboBoxHelper.HorizontalOffset="-5"/>
 
             <TextBox x:Name="textbox_reps" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość powtórzeń" Text="{Binding Reps,Mode=TwoWay}" 
                        core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
             <TextBox x:Name="textbox_sets" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Ilość serii"
-                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Text="{Binding Sets}"/>
-            <TextBox x:Name="textbox_load" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Obciążenie" Text="{Binding Load}"
+                     core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55" Text="{Binding Sets,Mode=TwoWay}"/>
+            <TextBox x:Name="textbox_load" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Obciążenie" Text="{Binding Load,Mode=TwoWay}"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
-            <TextBox x:Name="textbox_resttime" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]" Text="{Binding Rest_time}"
+            <TextBox x:Name="textbox_resttime" Style="{StaticResource InputTextBox}" core:TextBoxHelper.Title="Przerwa [s]" Text="{Binding Rest_time,Mode=TwoWay}"
                      core:TextBoxHelper.BorderWidth="100" core:TextBoxHelper.BorderHeight="55"/>
         </StackPanel>
         <Grid Grid.Row="3">
@@ -56,11 +56,14 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
+
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Command="{Binding AddExerciseCommand}" Content="Dodaj ćwiczenie" Style="{StaticResource GradientButtonStyle}"/>
             <Button Grid.Column="1" Command="{Binding LoadExerciseCommand}" Content="Załaduj ćwiczenie" Style="{StaticResource GradientButtonStyle}"/>
             <Button Grid.Column="2" Command="{Binding EditExerciseCommand}" Content ="Edytuj ćwiczenie" Style="{StaticResource GradientButtonStyle}"/>
             <Button Grid.Column="3" Command="{Binding DeleteExerciseCommand}" Content ="Usuń ćwiczenie" Style="{StaticResource GradientButtonStyle}"/>
+            <Button Grid.Column="4" Command="{Binding ClearWorkoutCommand}" Content="Wyczyść wszystko" Style="{StaticResource GradientButtonStyle}" />
         </Grid>
   
         <ListBox Grid.Row="4" ItemsSource="{Binding WorkoutsExercisess}" SelectedItem="{Binding SelectedWorkoutExercise}" SelectedIndex="{Binding SelectedWorkoutExercisesIndex}"

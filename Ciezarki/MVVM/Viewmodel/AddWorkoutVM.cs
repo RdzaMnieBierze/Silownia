@@ -22,6 +22,7 @@ namespace Ciezarki.MVVM.Viewmodel
         public ICommand EditExerciseCommand { get; }
         public ICommand DeleteExerciseCommand { get; }
         public ICommand SaveWorkoutCommand { get; }
+        public ICommand ClearWorkoutCommand { get; }
 
         private Exercise _selectedExercise;
         public Exercise SelectedExercise
@@ -45,10 +46,16 @@ namespace Ciezarki.MVVM.Viewmodel
         private WorkoutExercises _editWorkoutExercise;
         public WorkoutExercises EditWorkoutExercise
         {
-            set { _editWorkoutExercise = value;
+            get => _editWorkoutExercise;
+            set
+            {
+                _editWorkoutExercise = value;
                 OnPropertyChanged(nameof(EditWorkoutExercise));
+                OnPropertyChanged(nameof(Load));
+                OnPropertyChanged(nameof(Reps));
+                OnPropertyChanged(nameof(Sets));
+                OnPropertyChanged(nameof(Rest_time));
             }
-            get { return _editWorkoutExercise; }    
         }
         private WorkoutExercises _selectedWorkoutExercise;
 
@@ -68,20 +75,33 @@ namespace Ciezarki.MVVM.Viewmodel
 
         private AppDbContext _dbContext;
 
-        public DateTime Date {  get; set; } 
+        public DateTime Date {  get; set; }
+        private string? _name;
         public string? Name
         {
-            get;
-            set;
-        }
-        public string? Notes
-        {
-            get => _workout.Notes.ToString();
+            get => _name;
             set
             {
-                _workout.Notes = value;
-                OnPropertyChanged(nameof(Notes));
+                if (_name != value)
+                {
+                    _name = value;
+                    OnPropertyChanged(nameof(Name));
+                }
+            }
+        }
 
+
+        private string? _notes;
+        public string? Notes
+        {
+            get => _notes;
+            set
+            {
+                if (_notes != value)
+                {
+                    _notes = value;
+                    OnPropertyChanged(nameof(Notes));
+                }
             }
         }
 
@@ -170,9 +190,8 @@ namespace Ciezarki.MVVM.Viewmodel
             DeleteExerciseCommand = new RelayCommand(_ => DeleteExercise(), _ => true);
             AddExerciseCommand = new RelayCommand(_ => AddExercise(), _ => true);
             SaveWorkoutCommand = new RelayCommand(_ => SaveWorkout(), _ => true);
+            ClearWorkoutCommand  = new RelayCommand(_ => ClearAll(), _ => true);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
 
         private void DeleteExercise() {
@@ -188,11 +207,15 @@ namespace Ciezarki.MVVM.Viewmodel
                 _workout.Create_date = DateTime.Now;
                 _workout.Name = Name;
                 _workout.Notes = Notes;
-                _dbContext.Workouts.Add(_workout);
+                var _addworkout = new Workout();
+                _addworkout.Name = _workout.Name;
+                _addworkout.Notes = _workout.Notes;
+                _dbContext.Workouts.Add(_addworkout);
                 _dbContext.SaveChanges();
+
                 _editUserWorkout.Name = Name;
                 _editUserWorkout.Id_user = DbData.UserId;
-                _editUserWorkout.Id_workout = _workout.Id;
+                _editUserWorkout.Id_workout = _addworkout.Id;
                 _editUserWorkout.Create_date = DateTime.Now;
                 _editUserWorkout.Plan_date = Date;
                 _dbContext.UserWorkouts.Add(_editUserWorkout);
@@ -218,13 +241,14 @@ namespace Ciezarki.MVVM.Viewmodel
             _editUserWorkout = new UserWorkout();
             _editWorkoutExercise = new WorkoutExercises();
             _selectedWorkoutExercise = null;
-            _selectedExercise = null;
-            Name = "";
-            OnPropertyChanged(nameof(Name));
-            Notes = "";
-            OnPropertyChanged(nameof(Notes));
+            SelectedExercise = null;
             Date = DateTime.Now;
             WorkoutsExercisess.Clear();
+            Name = null;
+            OnPropertyChanged(nameof(Name));
+            Notes = null;
+            OnPropertyChanged(nameof(Notes));
+
         }
         private void EditExercise() {
             
@@ -235,39 +259,55 @@ namespace Ciezarki.MVVM.Viewmodel
             }
         }
         private void LoadExercise() {
-            EditWorkoutExercise = new WorkoutExercises();
-            EditWorkoutExercise.Load_exercise = SelectedWorkoutExercise.Load_exercise;
-            EditWorkoutExercise.Reps_exercise = SelectedWorkoutExercise.Reps_exercise;
-            EditWorkoutExercise.Sets_exercise = SelectedWorkoutExercise.Sets_exercise;
-            EditWorkoutExercise.Resttime_exercise = SelectedWorkoutExercise.Resttime_exercise;
-            OnPropertyChanged(nameof(EditWorkoutExercise));
-            SelectedExercise = SelectedWorkoutExercise.Exercise;
 
+            if (SelectedWorkoutExercise == null)
+            {
+                MessageBox.Show("Nie wybrano ćwiczenia.");
+                return;
+            }
+
+            // Nowy obiekt z danymi
+            var loadedworkoutexercise = new WorkoutExercises
+            {
+                Load_exercise = SelectedWorkoutExercise.Load_exercise,
+                Reps_exercise = SelectedWorkoutExercise.Reps_exercise,
+                Sets_exercise = SelectedWorkoutExercise.Sets_exercise,
+                Resttime_exercise = SelectedWorkoutExercise.Resttime_exercise,
+                Exercise = SelectedWorkoutExercise.Exercise,
+                Id_exercise = SelectedWorkoutExercise.Id_exercise
+            };
+            EditWorkoutExercise = loadedworkoutexercise;
+            OnPropertyChanged(nameof(EditWorkoutExercise));
+            // Ustawienie wybranego ćwiczenia dla ComboBoxa
+            SelectedExercise = SelectedWorkoutExercise.Exercise;
 
         }
         public void AddExercise()
         {
-            if(SelectedExercise.Id  != null)
+            try
             {
-                var newExercise = new WorkoutExercises
+                if (SelectedExercise.Id >0)
                 {
-                    Id_exercise = SelectedExercise.Id,
-                    Exercise = SelectedExercise,
-                    Load_exercise = EditWorkoutExercise.Load_exercise,
-                    Reps_exercise = EditWorkoutExercise.Reps_exercise,
-                    Sets_exercise = EditWorkoutExercise.Sets_exercise,
-                    Resttime_exercise = EditWorkoutExercise.Resttime_exercise
-                };
+                    
+                    var newExercise = new WorkoutExercises
+                    {
+                        Id_exercise = SelectedExercise.Id,
+                        Exercise = SelectedExercise,
+                        Load_exercise = EditWorkoutExercise.Load_exercise,
+                        Reps_exercise = EditWorkoutExercise.Reps_exercise,
+                        Sets_exercise = EditWorkoutExercise.Sets_exercise,
+                        Resttime_exercise = EditWorkoutExercise.Resttime_exercise
+                    };
+                
 
-                WorkoutsExercisess.Add(newExercise);
+                    WorkoutsExercisess.Add(newExercise);
+                }
+
             }
+            catch { }
             
+        }
 
-        }
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
 
         public void AddWorkout(Workout workout)
         {

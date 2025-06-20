@@ -87,7 +87,7 @@ namespace Ciezarki.MVVM.Viewmodel
 
 
         }
-        private bool _isLoginPanelVisible = true;//zmień na false żeby ukryć panel logowania
+        private bool _isLoginPanelVisible = false;//zmień na false żeby ukryć panel logowania
         private string _usernameRegistration;
         private string _emailRegistration;
         private string _passwordRegistration;

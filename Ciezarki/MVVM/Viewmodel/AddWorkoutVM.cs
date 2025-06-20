@@ -228,7 +228,7 @@ namespace Ciezarki.MVVM.Viewmodel
                     _dbContext.Add(newWorkoutExercise);
                 }
                 _dbContext.SaveChanges();
-                MessageBox.Show("Dodano ćwiczenie " + Name + "!");
+                MessageBox.Show("Dodano trening " + Name + "!");
                 ClearAll();
             }
             else MessageBox.Show("Proszę wypełnić nazwę treningu i zaznaczyć przynamniej 1 ćwiczenie");

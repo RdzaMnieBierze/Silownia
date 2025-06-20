@@ -69,8 +69,18 @@ namespace Ciezarki.MVVM.Viewmodel
                     context.SaveChanges();
                 }
                 MessageBox.Show("Ćwiczenie zostało dodane pomyślnie!", "Sukces!", MessageBoxButton.OK, MessageBoxImage.Information);
+                Clear();
                
             }
+        }
+
+        private void Clear()
+        {
+            _exercise = new Exercise();
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(Muscle));
+            OnPropertyChanged(nameof(Description));
+
         }
     }
 }

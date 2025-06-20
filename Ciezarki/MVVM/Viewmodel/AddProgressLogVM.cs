@@ -37,7 +37,7 @@ namespace Ciezarki.MVVM.Viewmodel
 
         public string Weight
         {
-            get => _progressLog.Weight.ToString("F1");
+            get => _progressLog.Weight.ToString();
             set             {
                 if (double.TryParse(value, out double weight))
                 {
@@ -49,7 +49,7 @@ namespace Ciezarki.MVVM.Viewmodel
 
         public string Height
         {
-            get => _progressLog.Height.ToString("F1");
+            get => _progressLog.Height.ToString();
             set
             {
                 if (double.TryParse(value, out double height))
@@ -61,7 +61,7 @@ namespace Ciezarki.MVVM.Viewmodel
         }
 
         public string Biceps     {
-            get => _progressLog.Biceps.ToString("F1");
+            get => _progressLog.Biceps.ToString();
             set
             {
                 if (double.TryParse(value, out double biceps))
@@ -74,7 +74,7 @@ namespace Ciezarki.MVVM.Viewmodel
 
         public string Chest
         {
-            get => _progressLog.Chest.ToString("F1");
+            get => _progressLog.Chest.ToString();
 
             set
             {
@@ -88,6 +88,7 @@ namespace Ciezarki.MVVM.Viewmodel
 
         public void LoadData()
         {
+            _dbContext.Database.EnsureCreated();
             var logs = _dbContext.ProgressLogs
                 .Where(p => p.UserId == DbData.UserId)
                 .OrderBy(p => p.Date)

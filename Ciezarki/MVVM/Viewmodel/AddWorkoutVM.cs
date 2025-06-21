@@ -238,11 +238,12 @@ namespace Ciezarki.MVVM.Viewmodel
         private void ClearAll()
         {
             _workout = new Workout();
-            _editUserWorkout = new UserWorkout();
-            _editWorkoutExercise = new WorkoutExercises();
-            _selectedWorkoutExercise = null;
+            EditUserWorkout = new UserWorkout();
+            EditWorkoutExercise = new WorkoutExercises();
+            SelectedWorkoutExercise = null;
             SelectedExercise = null;
             Date = DateTime.Now;
+            OnPropertyChanged(nameof(Date));
             WorkoutsExercisess.Clear();
             Name = null;
             OnPropertyChanged(nameof(Name));

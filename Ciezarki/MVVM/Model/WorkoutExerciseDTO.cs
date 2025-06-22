@@ -17,8 +17,10 @@ namespace Ciezarki.MVVM.Model
 
         public override string ToString()
         {
-            return $"{Name, -40}Powtórzenia: {Reps, -8}Serie: {Sets, -8}Obciążenie: {Load, 5} kg\tOdpoczynek: {Resttime, 4} s\tMięśnie: {Muscle, -20}";
+            return string.Format("{0,-30} Powtórzenia: {1,-3} Serie: {2,-3} Obciążenie: {3,4} kg  Odpoczynek: {4,4} s  Mięśnie: {5,-20}",
+                                 Name, Reps, Sets, Load, Resttime, Muscle);
         }
+
     }
 
 }

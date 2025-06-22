@@ -10,10 +10,11 @@
              d:DesignHeight="600" d:DesignWidth="960">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="3.5*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3.5*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -21,6 +22,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -28,7 +30,7 @@
             </Grid.RowDefinitions>
 
             <TextBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-                     Style="{StaticResource InputTextBox}" core:TextBoxHelper.BorderHeight="105"
+                     Style="{StaticResource InputTextBox}" core:TextBoxHelper.BorderHeight="90"
                      core:TextBoxHelper.BorderWidth="230" core:TextBoxHelper.Title="Szukaj po nazwie"
                      Text="{Binding NameSearch}"/>
 
@@ -45,9 +47,10 @@
                            HorizontalAlignment="Center" Margin="5"/>
                 <ComboBox Style="{StaticResource StyledComboBox}"
                           ItemsSource="{Binding SortList}"
-                          SelectedItem="{Binding sortBy}"
+                          SelectedItem="{Binding SortBy}"
                           core:ComboBoxHelper.HorizontalOffset="40"/>
             </StackPanel>
+            
 
         </Grid>
 
@@ -63,7 +66,10 @@
         <Button Grid.Row="2" Content="WYBIERZ TRENING" Command="{Binding LoadSelectedWorkout}"
                 Style="{StaticResource GradientButtonStyle}"/>
 
-        <ListBox Grid.Row="3"
+        <TextBox Grid.Row="3" Text="{Binding Notes}" Style="{StaticResource InputTextBox}" IsReadOnly="True"
+                 core:TextBoxHelper.Title="Notatki" core:TextBoxHelper.BorderHeight="70" core:TextBoxHelper.BorderWidth="920"/>
+
+        <ListBox Grid.Row="4"
                  ItemsSource="{Binding WorkoutExercises}"
                  Style="{StaticResource StyledListBox}"/>
 

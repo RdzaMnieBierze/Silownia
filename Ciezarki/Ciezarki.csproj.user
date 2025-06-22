@@ -45,6 +45,9 @@
     <Page Update="Themes\MenuButtons.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\TextBlockNotes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\TextBoxLogin.xaml">
       <SubType>Designer</SubType>
     </Page>

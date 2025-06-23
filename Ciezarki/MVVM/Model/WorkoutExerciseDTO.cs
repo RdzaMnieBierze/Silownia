@@ -8,8 +8,8 @@ namespace Ciezarki.MVVM.Model
 {
     public class WorkoutExerciseDTO
     {
-        public string Name { get; set; }
-        public string Muscle { get; set; }
+        public string? Name { get; set; }
+        public string? Muscle { get; set; }
         public int Reps { get; set; }
         public int Sets { get; set; }
         public double Load { get; set; }

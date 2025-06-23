@@ -50,18 +50,12 @@
                           SelectedItem="{Binding SortBy}"
                           core:ComboBoxHelper.HorizontalOffset="40"/>
             </StackPanel>
-            
-
         </Grid>
 
         <ListBox Grid.Row="1"
          ItemsSource="{Binding ListOfWorkouts}"
          SelectedItem="{Binding SelectedWorkout}"
-         Style="{StaticResource StyledListBox}">
-
-        </ListBox>
-
-
+         Style="{StaticResource StyledListBox}"/>
 
         <Button Grid.Row="2" Content="WYBIERZ TRENING" Command="{Binding LoadSelectedWorkout}"
                 Style="{StaticResource GradientButtonStyle}"/>
@@ -72,8 +66,6 @@
         <ListBox Grid.Row="4"
                  ItemsSource="{Binding WorkoutExercises}"
                  Style="{StaticResource StyledListBox}"/>
-
-
 
     </Grid>
 </UserControl>

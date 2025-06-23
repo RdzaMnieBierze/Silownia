@@ -15,9 +15,6 @@ namespace Ciezarki.MVVM.Viewmodel
 {
     internal class ShowHistoryVM : BaseVM
     {
-        private UserWorkout _userWorkout;
-        private Workout _workout;
-
         public List<string> SortList { get; } = new List<string>
         {
             "Od najstarszego",
@@ -34,16 +31,6 @@ namespace Ciezarki.MVVM.Viewmodel
                 _sortBy = value;
                 OnPropertyChanged(nameof(SortBy));
                 FilterAndSortWorkouts();
-            }
-        }
-        private string _statusMessage;
-        public string StatusMessage
-        {
-            get => _statusMessage;
-            set
-            {
-                _statusMessage = value;
-                OnPropertyChanged(nameof(StatusMessage));
             }
         }
 
@@ -82,18 +69,9 @@ namespace Ciezarki.MVVM.Viewmodel
             }
         }
         public List<UserWorkout>? ListOfWorkouts { get; set; }
-        private List<WorkoutExercises>? _specificWorkoutExercises;
-        public List<WorkoutExercises>? SpecificWorkoutExercises
-        {
-            get => _specificWorkoutExercises;
-            set
-            {
-                _specificWorkoutExercises = value;
-                OnPropertyChanged(nameof(SpecificWorkoutExercises));
-            }
-        }
-        private ObservableCollection<WorkoutExerciseDTO> _workoutExercises;
-        public ObservableCollection<WorkoutExerciseDTO> WorkoutExercises
+
+        private ObservableCollection<WorkoutExerciseDTO>? _workoutExercises;
+        public ObservableCollection<WorkoutExerciseDTO>? WorkoutExercises
         {
             get => _workoutExercises;
             set
@@ -102,8 +80,8 @@ namespace Ciezarki.MVVM.Viewmodel
                 OnPropertyChanged(nameof(WorkoutExercises));
             }
         }
-        private string _notes;
-        public string Notes
+        private string? _notes;
+        public string? Notes
         {
             get => _notes;
             set
@@ -112,8 +90,8 @@ namespace Ciezarki.MVVM.Viewmodel
                 OnPropertyChanged(nameof(Notes));
             }
         }
-        private UserWorkout _selectedWorkout;
-        public UserWorkout SelectedWorkout
+        private UserWorkout? _selectedWorkout;
+        public UserWorkout? SelectedWorkout
         {
             get => _selectedWorkout;
             set
@@ -128,10 +106,14 @@ namespace Ciezarki.MVVM.Viewmodel
         public ShowHistoryVM()
         {
             _dbContext = new AppDbContext();
-            _userWorkout = new UserWorkout();
-            _workout = new Workout();
+            _selectedWorkout = null;
+            _sortBy = SortList[1];
+            _dateAfter = string.Empty;
+            _dateBefore = string.Empty;
+            _nameSearch = string.Empty;
+            _notes = string.Empty;
+            _workoutExercises = null;
             LoadSelectedWorkout = new RelayCommand(_ => LoadSpecificWorkout(), _ => SelectedWorkout != null);
-            _specificWorkoutExercises = null;
 
             LoadWorkouts();
         }

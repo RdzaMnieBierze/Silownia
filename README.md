@@ -3,8 +3,10 @@
 Aplikacja desktopowa typu *Workout Tracker* stworzona w technologii WPF. Służy do planowania treningów, bazy ćwiczeń oraz śledzenia postępów siłowych i sylwetkowych. Projekt zrealizowany w ramach przedmiotu **Programowanie obiektowe i graficzne**.
 
 ## 📸 Rzut oka na aplikację
-
-> [Tu wstaw zrzut ekranu: Główny widok aplikacji / Dashboard (z Części II dokumentacji)]
+Widok z historią treningów z możliwością filtracji
+![Widok z historią treningów z możliwością filtracji](HistoryView.png)
+Widok z wykresem zmian wymiarów ciała
+![Widok z wykresem zmian wymiarów ciała](ProgressView.png)
 
 ## 🚀 Funkcjonalności
 

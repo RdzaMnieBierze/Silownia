@@ -23,7 +23,7 @@ Projekt został zbudowany zgodnie z nowoczesnymi standardami programowania deskt
 
 * **Język:** C#
 * **Framework UI:** WPF (Windows Presentation Foundation)
-* **Wzorzec projektowy:** **MVVM** (Model-View-ViewModel) – pełna separacja logiki biznesowej od interfejsu.
+* **Wzorzec projektowy:** **MVVM** (Model-View-ViewModel)
 * **Baza danych:** SQLite + Entity Framework Core.
 
 ## 💾 Baza Danych i Architektura
